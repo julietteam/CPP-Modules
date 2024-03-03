@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
+#    By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 17:15:58 by juandrie          #+#    #+#              #
-#    Updated: 2024/02/29 18:20:37 by juandrie         ###   ########.fr        #
+#    Updated: 2024/03/02 16:39:06 by julietteand      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = MyAwesomePhoneBook
+NAME = PhoneBook
 
 SRCS =	main.cpp\
 		Contact.cpp\

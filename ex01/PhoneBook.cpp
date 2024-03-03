@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:20:28 by juandrie          #+#    #+#             */
-/*   Updated: 2024/02/29 18:54:19 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/02 17:27:54 by julietteand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@
 PhoneBook::PhoneBook() : current_contact(0) {
 }
 
+void askForInput(const std::string& field_name, std::string& input)
+{
+    while (true)
+    {
+        std::cin.ignore();
+        std::cout << "Enter " << field_name << ": ";
+        std::getline(std::cin, input);
+        if (!input.empty())
+        {
+            break;
+        }
+        std::cin.clear();
+        std::cerr << field_name << " cannot be empty. Please enter a valid " << field_name << ".";
+    }
+}
+
 
 void PhoneBook::addContact()
 {
@@ -28,28 +44,22 @@ void PhoneBook::addContact()
         std::cerr << "PhoneBook is full, replacing the oldest contact." << std::endl;
         current_contact = 0; 
     }
-
     Contact &contact = contacts[current_contact];
     std::string input;
 
-    std::cout << "Enter your first name: ";
-    std::getline(std::cin, input);
+    askForInput("first name", input);
     contact.setFirstName(input);
 
-    std::cout << "Enter your last name: ";
-    std::getline(std::cin, input);
+    askForInput("last name", input);
     contact.setLastName(input);
 
-    std::cout << "Enter your nickname: ";
-    std::getline(std::cin, input);
+    askForInput("nickname", input);
     contact.setNickname(input);
 
-    std::cout << "Enter your phone number: ";
-    std::getline(std::cin, input);
+    askForInput("phone number", input);
     contact.setPhoneNumber(input);
 
-    std::cout << "Enter your darkest secret: ";
-    std::getline(std::cin, input);
+    askForInput("darkest secret", input);
     contact.setDarkestSecret(input);
 
     current_contact++;
