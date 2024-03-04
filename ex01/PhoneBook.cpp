@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
+/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:20:28 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/02 17:27:54 by julietteand      ###   ########.fr       */
+/*   Updated: 2024/03/04 12:37:31 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,13 @@ void askForInput(const std::string& field_name, std::string& input)
 {
     while (true)
     {
-        std::cin.ignore();
         std::cout << "Enter " << field_name << ": ";
         std::getline(std::cin, input);
         if (!input.empty())
         {
             break;
         }
-        std::cin.clear();
-        std::cerr << field_name << " cannot be empty. Please enter a valid " << field_name << ".";
+        std::cerr << field_name << " cannot be empty. Please enter a valid " << field_name << "." << std::endl;
     }
 }
 
@@ -47,6 +45,7 @@ void PhoneBook::addContact()
     Contact &contact = contacts[current_contact];
     std::string input;
 
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     askForInput("first name", input);
     contact.setFirstName(input);
 
@@ -61,8 +60,15 @@ void PhoneBook::addContact()
 
     askForInput("darkest secret", input);
     contact.setDarkestSecret(input);
-
     current_contact++;
+}
+
+std::string PhoneBook::truncateString(const std::string& str) const
+{
+    if (str.length() > 10)
+        return str.substr(0, 9) + ".";
+    else
+        return str;
 }
 
 void PhoneBook::searchContact() const 
@@ -75,9 +81,9 @@ void PhoneBook::searchContact() const
     for (int i = 0; i < current_contact; ++i)
     {
         std::cout << std::setw(10) << i << '|';
-        std::cout << std::setw(10) << contacts[i].getFirstName().substr(0, 9) << '|';
-        std::cout << std::setw(10) << contacts[i].getLastName().substr(0, 9) << '|';
-        std::cout << std::setw(10) << contacts[i].getNickname().substr(0, 9) << std::endl;
+        std::cout << std::setw(10) << truncateString(contacts[i].getFirstName()) << '|';
+        std::cout << std::setw(10) << truncateString(contacts[i].getLastName()) << '|';
+        std::cout << std::setw(10) << truncateString(contacts[i].getNickname()) << std::endl;
     }
 
     std::cout << "Enter the index of the contact to display: ";

@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:20:31 by juandrie          #+#    #+#             */
-/*   Updated: 2024/02/29 18:34:40 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:44:24 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class PhoneBook
 
     void addContact();
     void searchContact() const;
+    std::string truncateString(const std::string& str) const;
     
     
 };

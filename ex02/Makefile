@@ -5,16 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/29 17:15:58 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/04 12:48:33 by juandrie         ###   ########.fr        #
+#    Created: 2024/03/04 12:55:20 by juandrie          #+#    #+#              #
+#    Updated: 2024/03/04 13:09:49 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = PhoneBook
+NAME = Account
 
-SRCS =	main.cpp\
-		Contact.cpp\
-		PhoneBook.cpp\
+SRCS =	Account.cpp\
+		tests.cpp\
 		
 
 FLAGS = clang++ -Wall -Wextra -Werror -std=c++98
