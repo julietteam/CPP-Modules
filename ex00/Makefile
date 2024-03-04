@@ -6,7 +6,7 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 16:36:39 by juandrie          #+#    #+#              #
-#    Updated: 2024/02/29 17:14:30 by juandrie         ###   ########.fr        #
+#    Updated: 2024/03/04 16:32:16 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,9 @@ all: $(NAME)
 $(NAME):
 	$(FLAGS) $(SRCS) -o $(NAME)
 
-clean:
+fclean:
 	rm -f $(NAME)
 
-re: clean all
+re: fclean all
 
-.PHONY: all clean re
+.PHONY: all clean fclean re

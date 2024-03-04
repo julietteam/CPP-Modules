@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:05:28 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/04 13:39:41 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:02:43 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ public:
 
 	typedef Account		t;
 
-	static int	getNbAccounts( void );
-	static int	getTotalAmount( void );
-	static int	getNbDeposits( void );
-	static int	getNbWithdrawals( void );
-	static void	displayAccountsInfos( void );
+	static int	getNbAccounts(void);
+	static int	getTotalAmount(void);
+	static int	getNbDeposits(void);
+	static int	getNbWithdrawals(void);
+	static void	displayAccountsInfos(void);
 
-	Account( int initial_deposit );
-	~Account( void );
+	Account(int initial_deposit);
+	~Account(void);
 
-	void	makeDeposit( int deposit );
-	bool	makeWithdrawal( int withdrawal );
-	int		checkAmount( void ) const;
-	void	displayStatus( void ) const;
+	void	makeDeposit(int deposit);
+	bool	makeWithdrawal(int withdrawal);
+	int		checkAmount(void) const;
+	void	displayStatus(void) const;
 
 
 private:

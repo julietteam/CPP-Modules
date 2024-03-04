@@ -6,7 +6,7 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 17:15:58 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/04 12:48:33 by juandrie         ###   ########.fr        #
+#    Updated: 2024/03/04 16:32:21 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,16 +17,16 @@ SRCS =	main.cpp\
 		PhoneBook.cpp\
 		
 
-FLAGS = clang++ -Wall -Wextra -Werror -std=c++98
+FLAGS = c++ -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
 $(NAME):
 	$(FLAGS) $(SRCS) -o $(NAME)
 
-clean:
+fclean:
 	rm -f $(NAME)
 
-re: clean all
+re: fclean all
 
-.PHONY: all clean re
+.PHONY: all clean fclean re

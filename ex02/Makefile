@@ -6,17 +6,16 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/04 12:55:20 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/04 13:09:49 by juandrie         ###   ########.fr        #
+#    Updated: 2024/03/04 16:32:28 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Account
 
 SRCS =	Account.cpp\
-		tests.cpp\
+		tests.cpp
 		
-
-FLAGS = clang++ -Wall -Wextra -Werror -std=c++98
+FLAGS = c++ -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
@@ -26,6 +25,9 @@ $(NAME):
 clean:
 	rm -f $(NAME)
 
-re: clean all
+fclean:
+	rm -f $(NAME)
 
-.PHONY: all clean re
+re: fclean all
+
+.PHONY: all clean fclean re

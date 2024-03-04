@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:20:28 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/04 12:37:31 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:26:14 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 #include "Contact.hpp"
 #include <iostream>
 #include <limits>
-#include <iomanip> // Pour std::setw et std::setfill
+#include <iomanip> 
 
 PhoneBook::PhoneBook() : current_contact(0) {
 }
 
-void askForInput(const std::string& field_name, std::string& input)
+void askForInput(const std::string &field_name, std::string &input)
 {
     while (true)
     {
@@ -63,7 +63,7 @@ void PhoneBook::addContact()
     current_contact++;
 }
 
-std::string PhoneBook::truncateString(const std::string& str) const
+std::string PhoneBook::truncateString(const std::string &str) const
 {
     if (str.length() > 10)
         return str.substr(0, 9) + ".";
