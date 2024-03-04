@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:20:28 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/04 16:26:14 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:09:51 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,24 @@ void askForInput(const std::string &field_name, std::string &input)
         std::getline(std::cin, input);
         if (!input.empty())
         {
+            if (field_name == "phone number")
+            {
+                bool is_digit = true;
+                for (std::size_t i = 0; i < input.length() ; ++i)
+                {
+                    char c = input[i];
+                    if (!std::isdigit(c))
+                    {
+                        is_digit = false;
+                        break;
+                    }
+                }
+                if (!is_digit)
+                {
+                    std::cerr << "Invalid phone number. Please enter only digits." << std::endl;
+                    continue;
+                }
+            }
             break;
         }
         std::cerr << field_name << " cannot be empty. Please enter a valid " << field_name << "." << std::endl;
