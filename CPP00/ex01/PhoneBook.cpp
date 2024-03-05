@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:20:28 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/04 17:09:51 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:12:05 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <limits>
 #include <iomanip> 
+#include <cstdlib>
 
 PhoneBook::PhoneBook() : current_contact(0) {
 }
@@ -26,6 +27,11 @@ void askForInput(const std::string &field_name, std::string &input)
     {
         std::cout << "Enter " << field_name << ": ";
         std::getline(std::cin, input);
+        if (std::cin.eof())
+        {
+            std::cout << "\nEOF detected. Exiting the program." << std::endl;
+            exit(EXIT_FAILURE);
+        }
         if (!input.empty())
         {
             if (field_name == "phone number")
@@ -48,21 +54,26 @@ void askForInput(const std::string &field_name, std::string &input)
             }
             break;
         }
-        std::cerr << field_name << " cannot be empty. Please enter a valid " << field_name << "." << std::endl;
+        else
+        {
+            std::cerr << field_name << " cannot be empty. Please enter a valid " << field_name << "." << std::endl;
+        }
     }
 }
 
 
 void PhoneBook::addContact()
 {
+    int index = current_contact % 8;
+    Contact &contact = contacts[index];
+    std::string input;
+    
     if (current_contact >= 8)
     {
         std::cerr << "PhoneBook is full, replacing the oldest contact." << std::endl;
-        current_contact = 0; 
+        current_contact = 7;
     }
-    Contact &contact = contacts[current_contact];
-    std::string input;
-
+    std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     askForInput("first name", input);
     contact.setFirstName(input);
@@ -78,6 +89,7 @@ void PhoneBook::addContact()
 
     askForInput("darkest secret", input);
     contact.setDarkestSecret(input);
+    
     current_contact++;
 }
 
@@ -90,7 +102,7 @@ std::string PhoneBook::truncateString(const std::string &str) const
 }
 
 void PhoneBook::searchContact() const 
-{
+{   
     std::cout << std::setw(10) << "Index" << '|';
     std::cout << std::setw(10) << "First name" << '|';
     std::cout << std::setw(10) << "Last name" << '|';
