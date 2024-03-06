@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   filename.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 18:56:32 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/06 11:14:39 by juandrie         ###   ########.fr       */
+/*   Created: 2024/03/06 12:11:12 by juandrie          #+#    #+#             */
+/*   Updated: 2024/03/06 12:12:12 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_HPP
-#define HUMANA_HPP
+#ifndef FILENAME_H
+#define FILENAME_H
 
 #include <iostream>
 #include <string>
-#include "Weapon.hpp"
 
-class HumanA
+class filename
 {
 private:
-    std::string name;
-    Weapon &weapon;
-    
+    /* data */
 public:
-    HumanA(const std::string name, Weapon &weapon);
-
-    void attack() const;
+    filename(/* args */);
+    ~filename();
 };
 
 

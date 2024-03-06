@@ -5,20 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/06 11:05:10 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/06 11:06:09 by juandrie         ###   ########.fr        #
+#    Created: 2024/03/06 12:07:45 by juandrie          #+#    #+#              #
+#    Updated: 2024/03/06 12:09:44 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Brainz3
+NAME = Sed
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 
 SRC = 	main.cpp\
-		HumanA.cpp\
-		HumanB.cpp\
-		Weapon.cpp\
+		filename.cpp\
 
 OBJ = $(SRC:.cpp=.o)
 

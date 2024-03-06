@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 18:39:17 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/05 18:56:10 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/06 11:29:09 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,9 @@ private:
 public:
     Weapon(const std::string &type);
 
-    const std::string &getType() const {
-        return type;
-    }
-    void setType(const std::string &newType){ 
-        type = newType;
-    }
+    const std::string &getType() const;
+    
+    void setType(const std::string &newType);
     
 };
 

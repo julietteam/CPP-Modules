@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:20:28 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/05 18:12:05 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/06 12:36:00 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void askForInput(const std::string &field_name, std::string &input)
         if (std::cin.eof())
         {
             std::cout << "\nEOF detected. Exiting the program." << std::endl;
-            exit(EXIT_FAILURE);
+            std::exit(EXIT_FAILURE);
         }
         if (!input.empty())
         {
