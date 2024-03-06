@@ -6,7 +6,7 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/06 12:07:45 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/06 14:50:21 by juandrie         ###   ########.fr        #
+#    Updated: 2024/03/06 16:14:21 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD
 RM = rm -f
 
-SRC = 	main.cpp\
-		filename.cpp\
+SRC = 	main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
