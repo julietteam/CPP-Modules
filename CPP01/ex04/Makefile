@@ -6,19 +6,21 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/06 12:07:45 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/06 12:09:44 by juandrie         ###   ########.fr        #
+#    Updated: 2024/03/06 14:50:21 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Sed
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD
 RM = rm -f
 
 SRC = 	main.cpp\
 		filename.cpp\
 
 OBJ = $(SRC:.cpp=.o)
+
+DEP = $(SRC:.cpp=.d)
 
 all: $(NAME)
 
@@ -29,7 +31,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(DEP)
 
 fclean: clean
 	$(RM) $(NAME)
@@ -37,3 +39,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+-include $(DEP)

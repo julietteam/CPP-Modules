@@ -6,7 +6,7 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/04 12:55:20 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/06 13:45:22 by juandrie         ###   ########.fr        #
+#    Updated: 2024/03/06 14:38:33 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ DEP = $(SRCS:.cpp=.d)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(FLAGS) $(SRCS) -o $(NAME)
+	$(FLAGS) $(OBJ) -o $(NAME)
 
 %.o : %.cpp
 	@$(FLAGS) -c $< -o $@

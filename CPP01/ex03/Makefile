@@ -6,13 +6,13 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/06 11:05:10 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/06 11:06:09 by juandrie         ###   ########.fr        #
+#    Updated: 2024/03/06 14:49:17 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Brainz3
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD
 RM = rm -f
 
 SRC = 	main.cpp\
@@ -21,6 +21,8 @@ SRC = 	main.cpp\
 		Weapon.cpp\
 
 OBJ = $(SRC:.cpp=.o)
+
+DEP = $(SRC:.cpp=.d)
 
 all: $(NAME)
 
@@ -31,7 +33,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(DEP)
 
 fclean: clean
 	$(RM) $(NAME)
@@ -39,3 +41,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+-include $(DEP)
