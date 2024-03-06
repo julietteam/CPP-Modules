@@ -6,27 +6,36 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 17:15:58 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/04 16:32:21 by juandrie         ###   ########.fr        #
+#    Updated: 2024/03/06 13:41:48 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = PhoneBook
+CC = c++
+FLAGS = -Wall -Wextra -Werror -std=c++98 -MMD
 
-SRCS =	main.cpp\
-		Contact.cpp\
-		PhoneBook.cpp\
+SRCS = main.cpp Contact.cpp PhoneBook.cpp
+
+OBJ = $(SRCS:.cpp=.o)
 		
-
-FLAGS = c++ -Wall -Wextra -Werror -std=c++98
+DEP = $(SRCS:.cpp=.d)
 
 all: $(NAME)
 
-$(NAME):
-	$(FLAGS) $(SRCS) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
-fclean:
+%.o : %.cpp
+	$(CC) $(FLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJ) $(DEP)
+
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
 .PHONY: all clean fclean re
+
+-include $(DEP)

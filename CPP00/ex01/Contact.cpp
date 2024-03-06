@@ -6,12 +6,13 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:47:58 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/05 15:56:53 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/06 13:13:57 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Contact.hpp"
+#include "PhoneBook.hpp"
 
 
 Contact::Contact() {
