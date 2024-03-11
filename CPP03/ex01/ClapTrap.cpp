@@ -6,11 +6,16 @@
 /*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:25:54 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/11 23:36:44 by julietteand      ###   ########.fr       */
+/*   Updated: 2024/03/11 23:38:44 by julietteand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap(): Name(""), HitPoints(100), EnergyPoints(50), AttackDamage(20)
+{
+    std::cout << "ClapTrap default constructor called." << std::endl;
+}
 
 ClapTrap::ClapTrap(std:: string Name) : Name(Name), HitPoints(10), EnergyPoints(10), AttackDamage(0)
 {

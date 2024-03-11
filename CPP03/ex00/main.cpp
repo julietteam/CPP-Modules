@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:45:57 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/11 19:18:25 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/11 22:54:49 by julietteand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,34 @@
 
 int main()
 {
-    ClapTrap animal1("Guepard");
-    ClapTrap animal2("Girafe");
+    ClapTrap clapTrapA("Alpha");
+    ClapTrap clapTrapB("Bravo");
 
-    animal1.attack("Girafe");
-    animal1.beRepaired(1);
-    animal2.takeDamage(8);
+    clapTrapA.attack("Bravo");
 
-    
-    return (0);
+    clapTrapB.takeDamage(3);
+
+    clapTrapB.beRepaired(5);
+
+    for (int i = 0; i < 11; ++i)
+    {
+        clapTrapA.attack("Bravo");
+    }
+
+    clapTrapB.takeDamage(100);
+
+    clapTrapB.beRepaired(1);
+
+    clapTrapB.beRepaired(1);
+
+    clapTrapA.beRepaired(10);
+
+    ClapTrap clapTrapC = clapTrapA;
+    clapTrapC.attack("Bravo");
+
+    ClapTrap clapTrapD("Delta");
+    clapTrapD = clapTrapB;
+    clapTrapD.beRepaired(5);
+
+    return 0;
 }
