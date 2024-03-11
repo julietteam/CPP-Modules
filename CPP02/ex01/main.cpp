@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 18:03:40 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/07 18:35:53 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:56:35 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ int main( void )
     std::cout << "c is " << c.toInt() << " as integer" << std::endl;
     std::cout << "d is " << d.toInt() << " as integer" << std::endl;
     
-    return 0;
+    return (0);
 }
