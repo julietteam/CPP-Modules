@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 23:13:03 by julietteand       #+#    #+#             */
-/*   Updated: 2024/03/12 13:08:58 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:37:27 by julietteand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
+#include <iostream>
+#include <string>
 
 class ScavTrap : public ClapTrap
 {

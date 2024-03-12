@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 13:25:49 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/12 19:36:22 by julietteand      ###   ########.fr       */
+/*   Created: 2024/03/12 22:31:27 by julietteand       #+#    #+#             */
+/*   Updated: 2024/03/12 22:32:55 by julietteand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIAMONDTRAP_HPP
-#define DIAMONDTRAP_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
 #include <iostream>
 #include <string>
 
-class DiamondTrap : public ScavTrap, public FragTrap
+class WrongAnimal
 {
-private:
-    std::string _name;
-
+protected:
+	std::string type;
 public:
-    DiamondTrap();
-    DiamondTrap(const std::string &name);
-    DiamondTrap(const DiamondTrap &other);
-    DiamondTrap& operator=(const DiamondTrap &other);
-    virtual ~DiamondTrap();
+	WrongAnimal();
+	WrongAnimal(const std::string &type);
+    WrongAnimal(const WrongAnimal &other);
+    WrongAnimal &operator=(const WrongAnimal &other);
+	virtual ~WrongAnimal();
 
-    void attack(const std::string &target);
-    void whoAmI();
-
-
+	virtual void makeSound() const;
+	std::string getType() const;
 };
 
-#endif // DIAMONDTRAP_HPP
+
+#endif 
