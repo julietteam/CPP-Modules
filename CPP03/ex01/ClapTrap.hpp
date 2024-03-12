@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
+/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:17:31 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/11 23:30:50 by julietteand      ###   ########.fr       */
+/*   Updated: 2024/03/12 13:08:16 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 class ClapTrap
 {
     protected:
-    std::string Name;
-    unsigned int HitPoints;
-    unsigned int EnergyPoints;
-    unsigned int AttackDamage;
+    std::string name;
+    unsigned int hitPoints;
+    unsigned int energyPoints;
+    unsigned int attackDamage;
 
     public:
     ClapTrap();
-    ClapTrap(std:: string Name);
+    ClapTrap(const std:: string &name);
     ClapTrap(const ClapTrap &other);
     ClapTrap &operator=(const ClapTrap &other);
     virtual ~ClapTrap();

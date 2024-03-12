@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
+/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:45:57 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/11 23:43:38 by julietteand      ###   ########.fr       */
+/*   Updated: 2024/03/12 10:57:12 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,45 @@
 
 int main()
 {
-    // Test du constructeur par défaut de ClapTrap
-    ClapTrap clapTrap;
-    clapTrap.attack("TargetA");
-
-    // Test du constructeur avec nom de ClapTrap
+    std::cout << "Creating ClapTraps..." << std::endl;
+    ClapTrap defaultClapTrap;
     ClapTrap namedClapTrap("Clappy");
+    ClapTrap anotherClapTrap("Clapster");
+
+    std::cout << "\nTesting ClapTrap behavior..." << std::endl;
     namedClapTrap.attack("TargetB");
+    namedClapTrap.takeDamage(5);
+    namedClapTrap.beRepaired(3);
 
-    // Test du constructeur par défaut de ScavTrap
-    ScavTrap scavTrap;
-    scavTrap.guardGate();
+    std::cout << "\nTesting ClapTrap energy depletion..." << std::endl;
+    for (int i = 0; i < 15; i++)
+    {
+        defaultClapTrap.attack("TargetA");
+    }
 
-    // Test du constructeur avec nom de ScavTrap
+    std::cout << "\nTesting ClapTrap death..." << std::endl;
+    anotherClapTrap.takeDamage(100);
+    anotherClapTrap.attack("TargetC");
+    anotherClapTrap.beRepaired(10);
+
+    std::cout << "\nCreating ScavTraps..." << std::endl;
+    ScavTrap defaultScavTrap;
     ScavTrap namedScavTrap("Scavvy");
+    
+    std::cout << "\nTesting ScavTrap behavior..." << std::endl;
     namedScavTrap.guardGate();
     namedScavTrap.attack("TargetC");
-
-    // Test de prise de dégâts et de réparation
     namedScavTrap.takeDamage(30);
     namedScavTrap.beRepaired(20);
 
-    // Vérifier la chaîne de construction/destruction en sortant de la portée
-    {
-        ScavTrap tempScavTrap("TempScavvy");
-        tempScavTrap.attack("TargetD");
-    } // tempScavTrap sera détruit ici
+    std::cout << "\nTesting copy construction and assignment..." << std::endl;
+    ScavTrap clonedScavTrap(namedScavTrap);
+    ScavTrap assignedScavTrap = namedScavTrap;
 
-    std::cout << "Fin du main, destruction des autres objets." << std::endl;
+    clonedScavTrap.attack("The air");
+    assignedScavTrap.attack("The ground");
     
+    std::cout << "\nEnd of tests, objects will now be destroyed." << std::endl;
+
     return 0;
 }
-
