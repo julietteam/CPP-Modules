@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:27:21 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/12 15:02:14 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:22:35 by julietteand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other)
     if (this != &other)
     { 
         ClapTrap::operator=(other);
-        ScavTrap::operator=(other);
-        FragTrap::operator=(other);
         _name = other._name;
     }
     std::cout << "DiamondTrap assignment operator called." << std::endl;

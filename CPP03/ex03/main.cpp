@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:42:31 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/12 15:06:37 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:12:48 by julietteand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int main()
     dt1.highFivesGuys();
     
     std::cout << "\nTesting copy constructor...\n" << std::endl;
-    DiamondTrap dt2(dt1);
+    DiamondTrap dt2("DiamonHuman");
     dt2.whoAmI();
     
     std::cout << "\nTesting assignment operator...\n" << std::endl;
     DiamondTrap dt3 ("DiamondGirl");
-    dt3 = dt1;
-    dt3.whoAmI();
+    dt1 = dt3;
+    dt1.whoAmI();
 
     std::cout << "\nTesting destruction...\n" << std::endl;
 
