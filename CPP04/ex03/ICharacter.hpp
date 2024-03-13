@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 22:36:50 by julietteand       #+#    #+#             */
-/*   Updated: 2024/03/13 11:23:35 by juandrie         ###   ########.fr       */
+/*   Created: 2024/03/13 15:14:36 by juandrie          #+#    #+#             */
+/*   Updated: 2024/03/13 17:01:02 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-#define WRONGCAT_HPP
+#ifndef ICHARACTER_HPP
+#define ICHARACTER_HPP
 
-#include <iostream>
 #include <string>
-#include "WrongAnimal.hpp"
+#include <iostream>
+#include "AMateria.hpp"
 
-class WrongCat : public WrongAnimal
+class AMateria; 
+
+class ICharacter 
 {
 public:
-	WrongCat();
-	WrongCat(const WrongCat &other);
-	WrongCat &operator=(const WrongCat &other);
-	~WrongCat();
-
-	void makeSound() const;
+    virtual ~ICharacter();
+    virtual std::string const &getName() const = 0;
+    virtual void equip(AMateria *m) = 0;
+    virtual void unequip(int idx) = 0;
+    virtual void use(int idx, ICharacter &target) = 0;
 };
 
 #endif

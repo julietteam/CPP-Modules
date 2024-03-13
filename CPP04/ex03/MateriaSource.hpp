@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 22:36:50 by julietteand       #+#    #+#             */
-/*   Updated: 2024/03/13 11:23:35 by juandrie         ###   ########.fr       */
+/*   Created: 2024/03/13 16:20:09 by juandrie          #+#    #+#             */
+/*   Updated: 2024/03/13 16:28:14 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-#define WRONGCAT_HPP
+#ifndef MATERIASOURCE_HPP
+#define MATERIASOURCE_HPP
 
+#include "IMateriaSource.hpp"
+#include "AMateria.hpp"
 #include <iostream>
 #include <string>
-#include "WrongAnimal.hpp"
 
-class WrongCat : public WrongAnimal
+class MateriaSource : public IMateriaSource
 {
+private:
+    AMateria* slots[4];
 public:
-	WrongCat();
-	WrongCat(const WrongCat &other);
-	WrongCat &operator=(const WrongCat &other);
-	~WrongCat();
+    MateriaSource();
+    MateriaSource(const MateriaSource &other);
+    MateriaSource& operator=(const MateriaSource &other);
+    virtual ~MateriaSource();
 
-	void makeSound() const;
+    void learnMateria(AMateria *m);
+    AMateria* createMateria(std::string const &type);
 };
 
 #endif
+

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
+/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 21:54:19 by julietteand       #+#    #+#             */
-/*   Updated: 2024/03/12 23:16:10 by julietteand      ###   ########.fr       */
+/*   Updated: 2024/03/13 11:07:55 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ int main()
     std::cout << animal.getType() << " says ";
     animal.makeSound();
 
-    // Test assignment operator with different objects
-    Animal animal2 = cat; // Slicing, animal2 is an Animal, not a Cat.
+    Animal animal2 = cat;
     std::cout << "Animal2 is a " << animal2.getType() << std::endl;
     animal2.makeSound();
 
@@ -70,16 +69,16 @@ int main()
     std::cout << "Cat2 is a " << cat2.getType() << std::endl;
     cat2.makeSound();
 
-    // Demonstrate polymorphism with assignment
+   
     Animal *polyAnimal = new Dog();
     std::cout << "PolyAnimal is a " << polyAnimal->getType() << std::endl;
     polyAnimal->makeSound();
 
-    *polyAnimal = animal; // This is object slicing! polyAnimal is still a Dog, but with Animal's data.
+    *polyAnimal = animal;
     std::cout << "PolyAnimal is now a " << polyAnimal->getType() << std::endl;
     polyAnimal->makeSound();
 
-    delete polyAnimal; // Clean up dynamic memory
+    delete polyAnimal;
 
     return 0;
 }
