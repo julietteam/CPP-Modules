@@ -6,13 +6,16 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/04 17:41:47 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/06 14:34:51 by juandrie         ###   ########.fr        #
+#    Updated: 2024/03/14 10:44:19 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Brainz
 
-SRC = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRC =	main.cpp\
+		Zombie.cpp\
+		newZombie.cpp\
+		randomChump.cpp\
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD

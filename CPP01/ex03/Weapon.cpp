@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 18:40:28 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/06 11:24:55 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/14 11:20:12 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ const std::string& Weapon::getType() const
 
 void Weapon::setType(const std::string &newType)
 { 
-        type = newType;
+    type = newType;
 }

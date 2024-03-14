@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:02:38 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/05 14:30:22 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/14 11:07:53 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ std::string to_string(int number)
 {
     std::ostringstream ss;
     ss << number;
-    return ss.str();
+    return (ss.str());
 }
 
-Zombie* zombieHorde( int N, std::string name )
+Zombie* zombieHorde(int N, std::string name)
 {
    int  i = 0;
    Zombie *horde = new Zombie[N];

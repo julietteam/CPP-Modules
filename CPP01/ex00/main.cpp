@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:02:53 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/04 18:17:24 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/14 10:43:51 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ int main()
     randomChump("SecondZombie");
     
     delete heapZombie;
-    return 0;
+    return (0);
 }

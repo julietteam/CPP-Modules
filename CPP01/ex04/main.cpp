@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 12:09:55 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/06 19:30:16 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/14 11:53:22 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void replaceInFile(const std::string& filename, const std::string& s1, const std
 
     std::string outfile_name = filename + ".replace";
     std::ofstream file_out(outfile_name.c_str());
-    if (!file_out.is_open()) {
+    if (!file_out.is_open())
+    {
         std::cerr << "Could not create the file - '" << outfile_name << "'" << std::endl;
         return;
     }
-
     std::string line;
     while (getline(file_in, line))
     {
@@ -60,6 +60,7 @@ void replaceInFile(const std::string& filename, const std::string& s1, const std
     file_in.close();
     file_out.close();
 }
+
 int main(int argc, char **argv)
 {
     if (argc != 4)
@@ -73,5 +74,5 @@ int main(int argc, char **argv)
 
     replaceInFile(filename, s1, s2);
 
-    return 0;
+    return (0);
 }
