@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:17:31 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/13 19:25:43 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:33:43 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,10 @@ void Character::equip(AMateria *m)
     {
         if (inventory[i] == NULL)
         {
-            inventory[i] = m->clone();
+            inventory[i] = m;
             return;
         }
     }
-    delete m;
 }
 
 void Character::unequip(int idx)
