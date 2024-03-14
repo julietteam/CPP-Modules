@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:45 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/11 13:28:22 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:16:40 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,6 @@ Fixed Fixed::operator--(int)
     --(*this);
     return temp;
 }
-
 
 Fixed &Fixed::min(Fixed &a, Fixed &b)
 {
