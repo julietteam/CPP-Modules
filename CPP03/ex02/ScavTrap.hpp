@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
+/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 23:13:03 by julietteand       #+#    #+#             */
-/*   Updated: 2024/03/12 19:37:17 by julietteand      ###   ########.fr       */
+/*   Updated: 2024/03/14 18:24:04 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ public:
     ScavTrap &operator=(const ScavTrap &other);
     virtual ~ScavTrap();
 
-    void attack(const std::string& target); 
+    void attack(const std::string &target); 
     void guardGate();
 };
 
