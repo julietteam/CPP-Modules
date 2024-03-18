@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:25:13 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/13 13:31:05 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:13:28 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include "WrongAnimal.hpp"
 
 
-WrongCat::WrongCat() : WrongAnimal("WrongCat")
+WrongCat::WrongCat()
 {
+	this->type = "WrongCat";
 	std::cout << "WrongCat constructor called" << std::endl;
 }
 

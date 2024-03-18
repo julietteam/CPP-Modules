@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
+/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:09:42 by julietteand       #+#    #+#             */
-/*   Updated: 2024/03/12 22:47:02 by julietteand      ###   ########.fr       */
+/*   Updated: 2024/03/18 19:08:43 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Animal.hpp"
 
-
-Cat::Cat() : Animal("Cat")
+Cat::Cat()
 {
+	this->type = "Cat";
 	std::cout << "Cat constructor called" << std::endl;
 }
 

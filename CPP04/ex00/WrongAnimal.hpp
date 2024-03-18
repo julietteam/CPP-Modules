@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
+/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:31:27 by julietteand       #+#    #+#             */
-/*   Updated: 2024/03/12 22:32:55 by julietteand      ###   ########.fr       */
+/*   Updated: 2024/03/18 18:48:37 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ public:
     WrongAnimal &operator=(const WrongAnimal &other);
 	virtual ~WrongAnimal();
 
-	virtual void makeSound() const;
+	void makeSound() const;
 	std::string getType() const;
 };
 

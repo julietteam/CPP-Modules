@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:22:05 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/13 14:06:05 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:12:36 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include "AAnimal.hpp"
 
 
-Cat::Cat() : AAnimal("Cat"), brain(new Brain())
+Cat::Cat() : brain(new Brain())
 {
+	this->type = "Cat";
 	std::cout << "Cat constructor called" << std::endl;
 }
 

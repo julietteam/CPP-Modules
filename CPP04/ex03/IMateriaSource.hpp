@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:20:00 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/13 16:20:01 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:55:17 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class IMateriaSource
 {
 public:
 
-    virtual ~IMateriaSource();
+    virtual ~IMateriaSource() {};
     virtual void learnMateria(AMateria*) = 0;
     virtual AMateria* createMateria(std::string const & type) = 0;
 };

@@ -6,7 +6,7 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 16:50:19 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/13 18:45:55 by juandrie         ###   ########.fr        #
+#    Updated: 2024/03/18 18:54:35 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,6 @@ SRC = 	main.cpp\
 		Character.cpp\
 		Cure.cpp\
 		Ice.cpp\
-		ICharacter.cpp\
-		IMateriaSource.cpp\
 		MateriaSource.cpp\
 
 OBJ = $(SRC:.cpp=.o)

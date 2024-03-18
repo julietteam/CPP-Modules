@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
+/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 21:57:54 by julietteand       #+#    #+#             */
-/*   Updated: 2024/03/12 22:47:13 by julietteand      ###   ########.fr       */
+/*   Updated: 2024/03/18 19:09:01 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal("Dog")
+Dog::Dog()
 {
+	this->type = "Dog";
 	std::cout << "Dog constructor called" << std::endl;
 }
 

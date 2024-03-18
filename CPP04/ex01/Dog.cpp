@@ -6,14 +6,15 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:22:41 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/13 12:02:51 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:11:27 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal("Dog"), brain(new Brain())
+Dog::Dog() : brain(new Brain())
 {
+	this->type = "Dog";
 	std::cout << "Dog constructor called" << std::endl;
 }
 
