@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 13:30:16 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/13 14:04:33 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/19 11:03:56 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ int main()
     {
         delete animals[i];
     }
-
-    // Puisque Animal est une classe abstraite, les lignes suivantes provoqueraient une erreur :
-    // Animal animal; // Erreur, ne peut pas instancier une classe abstraite
-    // Animal* animal = new Animal(); // Erreur pour la même raison
+    // AAnimal animal;
+    // AAnimal* animal = new AAnimal();
 
     return 0;
 }
