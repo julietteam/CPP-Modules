@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:23:03 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/20 15:33:10 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:33:39 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,31 @@ void Bureaucrat::decrementGrade()
     ++grade;
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(AForm &aForm)
 {
     try
     {
-        form.beSigned(*this);
-        std::cout << name << " signed " << form.getName() << std::endl;
+        aForm.beSigned(*this);
+        std::cout << name << " signed " << aForm.getName() << std::endl;
     }
     catch(const std::exception &e)
     {
-        std::cout << name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+        std::cout << name << " couldn't sign " << aForm.getName() << " because " << e.what() << std::endl;
     }
     
+}
+
+void Bureaucrat::executeForm(AForm const &aForm)
+{
+    try
+    {
+        aForm.execute(*this);
+        std::cout << name << " executed " << aForm.getName() << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cerr << name << " couldn't execute " << aForm.getName() << " because " << e.what() << std::endl;
+    }
 }
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat &b)
