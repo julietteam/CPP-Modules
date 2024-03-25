@@ -5,19 +5,21 @@
 #                                                     +:+ +:+         +:+      #
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/25 11:25:15 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/25 11:25:16 by juandrie         ###   ########.fr        #
+#    Created: 2024/03/25 11:31:43 by juandrie          #+#    #+#              #
+#    Updated: 2024/03/25 11:32:18 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-NAME = Serialization
+NAME = Type
 CC = c++
 CFLAGS = -g -Wall -Wextra -Werror -std=c++98 -MMD
 RM = rm -f
 
 SRC = 	main.cpp\
-		Serializer.cpp\
+		Base.cpp\
+		A.cpp\
+		B.cpp\
+		C.cpp\
 
 OBJ = $(SRC:.cpp=.o)
 

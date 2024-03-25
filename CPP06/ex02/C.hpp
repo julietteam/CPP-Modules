@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 17:09:15 by julietteand       #+#    #+#             */
-/*   Updated: 2024/03/25 11:26:15 by juandrie         ###   ########.fr       */
+/*   Created: 2024/03/25 11:43:03 by juandrie          #+#    #+#             */
+/*   Updated: 2024/03/25 11:43:13 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZER_HPP
-#define SERIALIZER_HPP
+#include "Base.hpp"
 
-#include <iostream>
-#include <string>
+#ifndef C_HPP
+#define C_HPP
 
-struct Data
-{
-    int number;
-    std::string text;
-};
+class C : public Base
+{};
 
-
-class Serializer
-{
-public:
-	Serializer();
-	Serializer(const Serializer &other);
-	Serializer &operator=(const Serializer &other);
-	~Serializer();
-
-	static unsigned long serialize(Data *ptr);
-	static Data *deserialize(unsigned long raw);
-};
-
-
-#endif 
+#endif
