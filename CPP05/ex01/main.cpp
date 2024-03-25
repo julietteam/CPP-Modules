@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:31:39 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/19 18:27:30 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:05:44 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main() {
     }
     catch (const std::exception& e)
     {
-        std::cerr << "Exception while processing taxForm: " << e.what() << std::endl;
+        std::cout << "Exception while processing taxForm: " << e.what() << std::endl;
     }
 
     try
@@ -36,7 +36,7 @@ int main() {
     }
     catch (const std::exception& e)
     {
-        std::cerr << "Exception while processing permitForm: " << e.what() << std::endl;
+        std::cout << "Exception while processing permitForm: " << e.what() << std::endl;
     }
 
     try
@@ -45,7 +45,7 @@ int main() {
     }
     catch (const std::exception& e)
     {
-        std::cerr << "Exception while creating illegalForm: " << e.what() << std::endl;
+        std::cout << "Exception while creating illegalForm: " << e.what() << std::endl;
     }
 
     try
@@ -54,7 +54,7 @@ int main() {
     }
     catch (const std::exception& e)
     {
-        std::cerr << "Exception while creating anotherIllegalForm: " << e.what() << std::endl;
+        std::cout << "Exception while creating anotherIllegalForm: " << e.what() << std::endl;
     }
 
     try
@@ -64,7 +64,7 @@ int main() {
     }
     catch (const std::exception& e)
     {
-        std::cerr << "Exception while incrementing Juliette's grade: " << e.what() << std::endl;
+        std::cout << "Exception while incrementing Juliette's grade: " << e.what() << std::endl;
     }
 
     try
@@ -74,7 +74,7 @@ int main() {
     }
     catch (const std::exception& e)
     {
-        std::cerr << "Exception while decrementing Henri's grade: " << e.what() << std::endl;
+        std::cout << "Exception while decrementing Henri's grade: " << e.what() << std::endl;
     }
 
     return 0;
@@ -108,11 +108,11 @@ int main() {
 //         henri.decrementGrade(); // Devrait lever une exception GradeTooLowException
 
 //     } catch (const GradeTooHighException& e) {
-//         std::cerr << "Exception caught: " << e.what() << std::endl;
+//         std::cout << "Exception caught: " << e.what() << std::endl;
 //     } catch (const GradeTooLowException& e) {
-//         std::cerr << "Exception caught: " << e.what() << std::endl;
+//         std::cout << "Exception caught: " << e.what() << std::endl;
 //     } catch (const std::exception& e) {
-//         std::cerr << "Some other std::exception caught: " << e.what() << std::endl;
+//         std::cout << "Some other std::exception caught: " << e.what() << std::endl;
 //     }
 
 //     return 0;

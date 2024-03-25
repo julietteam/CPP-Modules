@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:31:39 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/19 13:59:54 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:05:50 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main()
     }
     catch (const std::exception &e)
     {
-        std::cerr << "Exception caught : " << e.what() << std::endl;
+        std::cout << "Exception caught : " << e.what() << std::endl;
     }
     return (0);
 }
