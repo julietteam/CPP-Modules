@@ -6,7 +6,7 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/25 11:31:43 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/25 11:32:18 by juandrie         ###   ########.fr        #
+#    Updated: 2024/03/25 16:17:03 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,6 @@ RM = rm -f
 
 SRC = 	main.cpp\
 		Base.cpp\
-		A.cpp\
-		B.cpp\
-		C.cpp\
 
 OBJ = $(SRC:.cpp=.o)
 
