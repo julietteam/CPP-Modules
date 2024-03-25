@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 11:53:38 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/21 18:39:52 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:41:50 by julietteand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,10 @@ void ScalarConverter::convert(const std::string &literal)
     char *end;
     errno = 0;
     double d = strtod(literal.c_str(), &end);
-    // Vérifier si la conversion a réussi sans dépasser le reste de la chaîne
     if (end != literal.c_str() && (*end == '\0' || *end == 'f' || *end == 'F'))
     {
-        // Conversion réussie, essayer de convertir en int
         long i = static_cast<long>(d);
 
-        // Conversion en char si possible
         if (i >= std::numeric_limits<char>::min() && \
         i <= std::numeric_limits<char>::max() && \
         std::isprint(static_cast<char>(i))) 
@@ -95,7 +92,6 @@ void ScalarConverter::convert(const std::string &literal)
         else 
             std::cout << "char: Non displayable" << std::endl;
 
-        // Conversion en int si dans les limites et pas de partie décimale
         if (d == i && i >= std::numeric_limits<int>::min() && i <= std::numeric_limits<int>::max())
         {
             std::cout << "int: " << i << std::endl;
@@ -103,7 +99,6 @@ void ScalarConverter::convert(const std::string &literal)
         else
             std::cout << "int: impossible" << std::endl;
 
-        // Conversion en float et double est toujours possible ici
         std::cout << "float: " << static_cast<float>(d) << ".0f" << std::endl;
         std::cout << "double: " << d << ".0" << std::endl;
     }
