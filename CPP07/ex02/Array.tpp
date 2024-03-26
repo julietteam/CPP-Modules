@@ -6,17 +6,21 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 18:20:56 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/25 19:07:48 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/26 12:22:51 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 template <typename T>
-Array<T>::Array() : elements(new T[0]), _size(0) {}
+Array<T>::Array() : elements(new T[0]), _size(0) 
+{
+    std::cout << "Array default constructor called" << std::endl;
+}
 
 template <typename T>
-Array<T>::Array(unsigned int n) : elements(new T[n]), _size(n) {
-    
+Array<T>::Array(unsigned int n) : elements(new T[n]), _size(n)
+{
+    std::cout << "Array constructor called" << std::endl;
 }
 
 template <typename T>
@@ -26,12 +30,14 @@ Array<T>::Array(const Array &other) : elements(new T[other._size]), _size(other.
     {
         elements[i] = other.elements[i];
     }
+    std::cout << "Array copy constructor called" << std::endl;
 }
 template <typename T>
 Array<T> &Array<T>::operator=(const Array &other)
 {
     if (this != &other)
     {
+        std::cout << "Array assignment operator called" << std::endl;
         delete []elements;
         _size = other._size;
         elements = new T[_size];
@@ -46,6 +52,7 @@ Array<T> &Array<T>::operator=(const Array &other)
 template <typename T>
 Array<T>::~Array()
 {
+    std::cout << "Array destructor called" << std::endl;
     delete []elements;
 }
 template <typename T>
@@ -71,6 +78,6 @@ const T &Array<T>::operator[](unsigned int index) const
 template <typename T>
 unsigned int Array<T>::size() const
 {
-    return _size;
+    return (_size);
 }
 

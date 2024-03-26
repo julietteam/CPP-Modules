@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 17:56:01 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/26 11:27:09 by juandrie         ###   ########.fr       */
+/*   Created: 2024/03/26 13:49:11 by juandrie          #+#    #+#             */
+/*   Updated: 2024/03/26 14:42:38 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARRAY_HPP
-#define ARRAY_HPP
+#ifndef EASYFIND_HPP
+#define EASYFIND_HPP
 
 #include <iostream>
 #include <string>
-#include <stdexcept>
-#include <ctime>
-#include <cstdlib>
+#include <algorithm>
+#include <vector>
+#include <list>
+#include <deque>
+#include <exception>
 
 template <typename T>
-class Array
+typename T::iterator easyfind(T &container, int value)
 {
-private:
-    T *elements;
-    unsigned int _size;
-public:
-    Array();
-    Array(unsigned int n);
-    Array(const Array &other);
-    Array &operator=(const Array &other);
-    ~Array();
-    
-    T &operator[](unsigned int index);
-    const T &operator[](unsigned int index) const;
-    
-    unsigned int size() const;
-};
+    typename T::iterator it = container.begin();
+    while (it != container.end())
+    {
+        if (*it == value)
+            return (it);
+        it++;
+    }
+    return (container.end());
+}
 
-
-
-#include "Array.tpp"
 #endif
