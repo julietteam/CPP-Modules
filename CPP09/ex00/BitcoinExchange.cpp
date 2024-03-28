@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:30:26 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/27 19:22:27 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:52:01 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ BitcoinExchange::~BitcoinExchange()
 }
 
 
-bool BitcoinExchange::processInputFile(const char *filename, const std::map<std::string, float>& exchangeRates)
+bool BitcoinExchange::processInputFile(const char *filename, const std::map<std::string, float> &exchangeRates)
 {
     std::ifstream file(filename);
     if (!file.is_open())
     {
         std::cout << "Error opening input file." << std::endl;
-        return false;
+        return (false);
     }
 
     std::string line;
@@ -51,29 +51,24 @@ bool BitcoinExchange::processInputFile(const char *filename, const std::map<std:
         if (!BitcoinExchange::dateIsValid(date))
         {
             std::cout << "Error: invalid date format => " << date << std::endl;
-            continue; // Skip lines with invalid date format
+            continue;
         }
-
-        // Convertir la valeur en float, en vérifiant les erreurs de conversion et la plage de valeur
         std::istringstream valueStream(valueStr);
         if (!(valueStream >> value) || valueStream.fail() || !valueStream.eof())
         {
             std::cout << "Error processing input line: " << line << std::endl;
-            continue; // Skip lines with conversion errors or additional characters after number
+            continue;
         }
-
         if (value < 0)
         {
             std::cout << "Error: not a positive number." << std::endl;
-            continue; // Skip lines with negative values
+            continue;
         }
-
-        if (value > 1000) // Utilisez la limite maximale appropriée pour votre application
+        if (value > 1000)
         {
             std::cout << "Error: too large a number." << std::endl;
-            continue; // Skip lines with values exceeding the maximum limit
+            continue;
         }
-        // Si la date et la valeur sont valides, effectuer le calcul ou l'opération désirée
         float calculatedValue = BitcoinExchange::calculatedValue(exchangeRates, date, value);
         if (calculatedValue != -1)
         {
@@ -86,7 +81,7 @@ bool BitcoinExchange::processInputFile(const char *filename, const std::map<std:
     }
 
     file.close();
-    return true;
+    return (true);
 }
 
 bool BitcoinExchange::loadDataFromFile(const char *filename, std::map<std::string, float> &data)
@@ -97,7 +92,6 @@ bool BitcoinExchange::loadDataFromFile(const char *filename, std::map<std::strin
 
     std::string line;
     std::getline(file, line);
-
     while (std::getline(file, line))
     {
         std::istringstream lineStream(line);
@@ -117,7 +111,7 @@ bool BitcoinExchange::loadDataFromFile(const char *filename, std::map<std::strin
     }
     
     file.close();
-    return true;
+    return (true);
 }
 float BitcoinExchange::findValueByDate(const std::map<std::string, float> &data, const std::string &date)
 {
@@ -136,11 +130,9 @@ float BitcoinExchange::findValueByDate(const std::map<std::string, float> &data,
     return (-1);
 }
 
-float BitcoinExchange::calculatedValue(const std::map<std::string, float>& data, const std::string &date, float quantity)
+float BitcoinExchange::calculatedValue(const std::map<std::string, float> &data, const std::string &date, float quantity)
 {
     float rate = findValueByDate(data, date);
-   // std::cout << "Using rate for " << date << ": " << rate << std::endl;
-
     
     if (rate == -1)
     {
