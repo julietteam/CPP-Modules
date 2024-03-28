@@ -6,18 +6,28 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:30:26 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/28 12:52:01 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:03:50 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange()
-{
-    
-}
 BitcoinExchange::BitcoinExchange(const std::string &date, float value) : date(date), value(value)
 {
+}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
+: rates(other.rates), date(other.date), value(other.value)
+{
+}
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
+{
+    if (this != &other)
+    {
+        rates = other.rates;
+        date = other.date;
+        value = other.value;
+    }
+    return (*this);
 }
 
 BitcoinExchange::~BitcoinExchange()
