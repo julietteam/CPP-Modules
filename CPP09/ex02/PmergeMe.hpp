@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:04:20 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/28 19:24:27 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/04/02 19:04:38 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,49 @@
 
 #include <iostream>
 #include <vector>
-#include <chrono>
+#include <deque>
 #include <algorithm>
+#include <ctime>
+#include <typeinfo>
 
+template <typename T>
 class PmergeMe
 {
 private:
-    std::vector<int> data;
-    static double sortTime;
-
-    void mergeSort(int leftIndex, int rightIndex);
-    void merge(int leftIndex, int middleIndex, int rightIndex);
-
+    T data;
+    static double vectorSortTime;
+    static double dequeSortTime;
+    
 public:
-    PmergeMe(std::vector<int> data);
+    PmergeMe(const T &data);
     PmergeMe(const PmergeMe &other);
     PmergeMe &operator=(const PmergeMe &other);
     ~PmergeMe();
 
-    void sort();
     void print() const;
-    static double getSortTime();
-    static void setSortTime(double time);
+    static double getVectorSortTime();
+    static void setVectorSortTime(double time);
+    static double getDequeSortTime();
+    static void setDequeSortTime(double time);
+
+    void triVectorFordJohnson();
+    void triDequeFordJohnson();
+
+    void insertionSort(std::vector<int> &vec, int left, int right);
+    int findMedian(std::vector<int>& vec, int left, int right);
+    int partition(std::vector<int>& vec, int left, int right, int pivot);
+    void mergeInsertSort(std::vector<int>& vec, int left, int right);
+
+    void insertionSortDeque(std::deque<int>& deq, int left, int right);
+    int findMedianDeque(std::deque<int>& deq, int left, int right);
+    int partitionDeque(std::deque<int>& deq, int left, int right, int pivot);
+    void mergeInsertSortDeque(std::deque<int> &deq, int left, int right);
+    
 };
 
-
+template <typename T>
+double PmergeMe<T>::vectorSortTime = 0;
+template <typename T>
+double PmergeMe<T>::dequeSortTime = 0;
 
 #endif 
