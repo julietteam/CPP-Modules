@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:05:35 by juandrie          #+#    #+#             */
-/*   Updated: 2024/04/03 18:59:23 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/04/04 11:30:26 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,14 @@ void PmergeMe<T>::mergeInsertSort(std::vector<int> &vec, int left, int right)
 {
     if (left >= right)
         return; 
-
+    for (int i = left; i < right; i += 2)
+    {
+        if (i + 1 <= right)
+        {
+            if (vec[i] > vec[i + 1])
+                std::swap(vec[i], vec[i + 1]);
+        }
+    }
     if (right - left + 1 <= 5)
     {
         insertionSort(vec, left, right);
@@ -209,7 +216,14 @@ void PmergeMe<T>::mergeInsertSortDeque(std::deque<int> &deq, int left, int right
 {
     if (left >= right)
         return;
-
+    for (int i = left; i < right; i += 2)
+    {
+        if (i + 1 <= right)
+        {
+            if (deq[i] > deq[i + 1])
+                std::swap(deq[i], deq[i + 1]);
+        }
+    }
     if (right - left + 1 <= 5)
     {
         insertionSortDeque(deq, left, right);
