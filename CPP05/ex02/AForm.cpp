@@ -6,12 +6,16 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:20:03 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/20 15:29:13 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/05/06 17:51:57 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
+
+AForm::AForm() : name("Default Form"), isSigned(false), gradeRequiredToSign(150), gradeRequiredToExecute(150)
+{
+}
 
 AForm::AForm(const std::string name, int gradeToSign, int gradeToExecute)
 : name(name), isSigned(false), gradeRequiredToSign(gradeToSign), gradeRequiredToExecute(gradeToExecute)

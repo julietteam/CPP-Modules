@@ -6,7 +6,7 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 11:21:25 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/20 14:25:30 by juandrie         ###   ########.fr        #
+#    Updated: 2024/05/06 18:21:08 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ OBJ = $(SRC:.cpp=.o)
 
 DEP = $(SRC:.cpp=.d)
 
+GENERATED_FILES = home_shrubbery
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -35,7 +37,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ) $(DEP)
+	$(RM) $(OBJ) $(DEP) $(GENERATED_FILES)
 
 fclean: clean
 	$(RM) $(NAME)

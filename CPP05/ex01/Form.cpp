@@ -6,12 +6,16 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:20:03 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/20 16:28:09 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:12:56 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
+
+Form::Form() : name("Default Form"), isSigned(false), gradeRequiredToSign(150), gradeRequiredToExecute(150)
+{
+}
 
 Form::Form(const std::string name, int gradeToSign, int gradeToExecute)
 : name(name), isSigned(false), gradeRequiredToSign(gradeToSign), gradeRequiredToExecute(gradeToExecute)

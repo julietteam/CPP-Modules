@@ -6,16 +6,35 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:31:14 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/20 14:07:36 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:04:13 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), target("Default")
+{
+    std::srand(std::time(0));
+}
+
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
 : AForm("RobotomyRequestForm", 72, 45), target(target)
 {
     std::srand(std::time(0));
+}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other)
+    : AForm(other), target(other.target)
+{
+}
+
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &other)
+{
+    if (this != &other)
+    {
+        AForm::operator=(other);
+        target = other.target;
+    }
+    return *this;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()

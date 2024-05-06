@@ -6,13 +6,15 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:23:03 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/25 16:04:52 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/05/06 17:48:29 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-
+Bureaucrat::Bureaucrat() : name("Unnamed"), grade(150)
+{
+}
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name), grade(grade)
 {
     if (grade < 1) 
@@ -88,7 +90,7 @@ void Bureaucrat::executeForm(AForm const &aForm)
     }
 }
 
-std::ostream &operator<<(std::ostream &os, Bureaucrat &b)
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &b)
 {
     os << b.getName() << ", bureaucrat grade " << b.getGrade() << std::endl;
     return (os);

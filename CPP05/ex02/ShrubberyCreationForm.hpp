@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:37:28 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/20 12:25:13 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:04:58 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,14 @@ class ShrubberyCreationForm : public AForm
 {
 private :
     std::string target;
+
 public:
+    ShrubberyCreationForm();
     ShrubberyCreationForm(const std::string &target);
+    ShrubberyCreationForm(const ShrubberyCreationForm &other);
+    ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
     virtual ~ShrubberyCreationForm();
+
     virtual void execute(const Bureaucrat &executor) const;
 };
 

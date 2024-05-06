@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:05:35 by juandrie          #+#    #+#             */
-/*   Updated: 2024/04/04 11:30:26 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:23:17 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int PmergeMe<T>::findMedian(std::vector<int> &vec, int left, int right)
 template<typename T>
 int PmergeMe<T>::selectPivot(std::vector<int> &vec, int left, int right)
 {
-    if (right - left < 5)
+    if (right - left < 10)
         return (findMedian(vec, left, right));
 
     std::vector<int> medians;
@@ -91,7 +91,12 @@ int PmergeMe<T>::selectPivot(std::vector<int> &vec, int left, int right)
         int subRight = i + 4;
         if (subRight > right)
             subRight = right;
-
+        for (int j = i; j < subRight; j += 2)
+        {
+            if (vec[j] > vec[j + 1])
+                std::swap(vec[j], vec[j + 1]);
+        }
+        insertionSort(vec, i, subRight);
         int median = findMedian(vec, i, subRight);
         medians.push_back(median);
     }
@@ -131,16 +136,24 @@ void PmergeMe<T>::mergeInsertSort(std::vector<int> &vec, int left, int right)
                 std::swap(vec[i], vec[i + 1]);
         }
     }
-    if (right - left + 1 <= 5)
+    if (right - left + 1 <= 10)
     {
         insertionSort(vec, left, right);
         return;
     }
     int pivot = selectPivot(vec, left, right);
-
     int partitionIndex = partition(vec, left, right, pivot);
-    mergeInsertSort(vec, left, partitionIndex - 1);
-    mergeInsertSort(vec, partitionIndex, right);
+    
+    if (partitionIndex - left < right - partitionIndex)
+    {
+        mergeInsertSort(vec, left, partitionIndex - 1);
+        mergeInsertSort(vec, partitionIndex, right);
+    }
+    else
+    {
+        mergeInsertSort(vec, partitionIndex, right);
+        mergeInsertSort(vec, left, partitionIndex - 1);
+    }
 }
 
 template<>
@@ -176,7 +189,7 @@ int PmergeMe<T>::findMedianDeque(std::deque<int> &deq, int left, int right)
 template<typename T>
 int PmergeMe<T>::selectPivotDeque(std::deque<int> &deq, int left, int right)
 {
-    if (right - left < 5)
+    if (right - left < 10)
         return (findMedianDeque(deq, left, right));
 
     std::vector<int> medians;
@@ -185,7 +198,12 @@ int PmergeMe<T>::selectPivotDeque(std::deque<int> &deq, int left, int right)
         int subRight = i + 4;
         if (subRight > right)
             subRight = right;
-
+        for (int j = i; j < subRight; j += 2)
+        {
+            if (deq[j] > deq[j + 1])
+                std::swap(deq[j], deq[j + 1]);
+        }
+        insertionSortDeque(deq, i, subRight);
         int median = findMedianDeque(deq, i, subRight);
         medians.push_back(median);
     }
@@ -224,23 +242,30 @@ void PmergeMe<T>::mergeInsertSortDeque(std::deque<int> &deq, int left, int right
                 std::swap(deq[i], deq[i + 1]);
         }
     }
-    if (right - left + 1 <= 5)
+    if (right - left + 1 <= 10)
     {
         insertionSortDeque(deq, left, right);
         return;
     }
 
     int pivot = selectPivotDeque(deq, left, right);
-
     int partitionIndex = partitionDeque(deq, left, right, pivot);
-    mergeInsertSortDeque(deq, left, partitionIndex - 1);
-    mergeInsertSortDeque(deq, partitionIndex, right);
+    if (partitionIndex - left < right - partitionIndex)
+    {
+        mergeInsertSortDeque(deq, left, partitionIndex - 1);
+        mergeInsertSortDeque(deq, partitionIndex, right);
+    }
+    else
+    {
+        mergeInsertSortDeque(deq, partitionIndex, right);
+        mergeInsertSortDeque(deq, left, partitionIndex - 1);
+    }
 }
 
 template<>
 void PmergeMe< std::deque<int> >::triDequeFordJohnson()
 {
-        mergeInsertSortDeque(data, 0, data.size() - 1);
+    mergeInsertSortDeque(data, 0, data.size() - 1);
 }
 
 template <typename T> 
