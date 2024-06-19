@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:31:14 by juandrie          #+#    #+#             */
-/*   Updated: 2024/05/06 18:12:19 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/19 19:58:31 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), target("Default")
 {
+    std::cout << "RobotomyRequestForm default constructor called" << std::endl;
     std::srand(std::time(0));
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
 : AForm("RobotomyRequestForm", 72, 45), target(target)
 {
+    std::cout << "RobotomyRequestForm assign constructor called" << std::endl;
     std::srand(std::time(0));
 }
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other)
     : AForm(other), target(other.target)
 {
+    std::cout << "RobotomyRequestForm copy constructor called" << std::endl;
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &other)
@@ -39,6 +42,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
+    std::cout << "RobotomyRequestForm destructor called" << std::endl;
 }
 
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const

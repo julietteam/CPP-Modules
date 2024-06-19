@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:39:01 by juandrie          #+#    #+#             */
-/*   Updated: 2024/05/06 18:05:32 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:57:11 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), target("Default")
 {
+    std::cout << "ShrubberyCreationForm default constructor called" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
 : AForm("ShrubberyCreationForm", 145, 137), target(target)
 {
+    std::cout << "ShrubberyCreationForm assign constructor called" << std::endl;
 }
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other), target(other.target)
 {
+    std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
@@ -36,6 +39,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
+    std::cout << "ShrubberyCreationForm destructor called" << std::endl;
 }
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const

@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:20:14 by juandrie          #+#    #+#             */
-/*   Updated: 2024/05/06 17:48:01 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:44:43 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,25 @@ public:
     public:
         const char *what() const throw()
         {
-            return ("Grade too high");
+            return ("Grade too high\n");
         }
     };
-
     class GradeTooLowException : public std::exception
     {
     public:
         const char *what() const throw()
         {
-            return ("Grade too low");
+            return ("Grade too low\n");
         }
     };
+    class AlreadySignedException : public std::exception
+	{
+		public:
+		const char* what(void) const throw()
+        {
+            return ("Form already signed\n");
+        }
+	};
 };
 
 std::ostream &operator<<(std::ostream &os, const AForm &aForm);

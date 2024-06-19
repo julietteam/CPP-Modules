@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:20:14 by juandrie          #+#    #+#             */
-/*   Updated: 2024/05/06 16:14:06 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:45:07 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include <stdexcept>
 
 class Bureaucrat;
-
 
 class Form
 {
@@ -47,7 +46,7 @@ public:
     public:
         const char *what() const throw()
         {
-            return "Grade too high";
+            return ("Grade too high to sign form\n");
         }
     };
 
@@ -56,9 +55,17 @@ public:
     public:
         const char *what() const throw()
         {
-            return "Grade too low";
+            return ("Grade too low to sign form\n");
         }
     };
+    class AlreadySignedException : public std::exception
+	{
+		public:
+		const char* what(void) const throw()
+        {
+            return ("Form already signed\n");
+        }
+	};
 };
 
 std::ostream &operator<<(std::ostream &os, const Form &form);

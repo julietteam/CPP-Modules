@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:31:39 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/20 18:43:19 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/19 19:49:32 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,77 +19,53 @@
 
 int main()
 {
-    Bureaucrat bob("Bob", 1);
-    Bureaucrat joe("Joe", 150);
+    /*// tester des valeurs plus elevees que 145, 72, 25*/
+    // try
+    // {
+    //     Bureaucrat bob("Bob", -5);
+    // }
+    // catch(const std::exception& e)
+    // {
+    //     std::cout << e.what() << std::endl;
+    // }
 
-    ShrubberyCreationForm shrubForm("home");
-    RobotomyRequestForm robotForm("Bob");
-    PresidentialPardonForm pardonForm("Joe");
-
-    std::cout << "-------------------------------------------" << std::endl;
-    std::cout << "Tentative de signature et exécution par Bob" << std::endl;
-    std::cout << "-------------------------------------------" << std::endl;
     try
     {
+        Bureaucrat bob("Bob", 1);
+        Bureaucrat joe("Joe", 150);
+        ShrubberyCreationForm shrubForm("home");
+        RobotomyRequestForm robotForm("Bob");
+        PresidentialPardonForm pardonForm("Joe");
+
+        std::cout << "-------------------------------------------" << std::endl;
+        std::cout << "Tentative de signature et exécution par Bob" << std::endl;
+        std::cout << "-------------------------------------------" << std::endl;
+        
         bob.signForm(shrubForm);
         bob.executeForm(shrubForm);
-    } 
-    catch (std::exception& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-
-    try 
-    {
+        
         bob.signForm(robotForm);
         bob.executeForm(robotForm);
-    } 
-    catch (std::exception& e) 
-    {
-        std::cout << e.what() << std::endl;
-    }
-
-    try 
-    {
         bob.signForm(pardonForm);
         bob.executeForm(pardonForm);
-    } 
-    catch (std::exception& e) 
-    {
-        std::cout << e.what() << std::endl;
-    }
-
-    std::cout << "-------------------------------------------" << std::endl;
-    std::cout << "Tentative de signature et exécution par Joe" << std::endl;
-    std::cout << "-------------------------------------------" << std::endl;
-    try
-    {
+        
+        std::cout << "-------------------------------------------" << std::endl;
+        std::cout << "Tentative de signature et exécution par Joe" << std::endl;
+        std::cout << "-------------------------------------------" << std::endl;
+    
         joe.signForm(shrubForm);
         joe.executeForm(shrubForm);
-    } 
-    catch (std::exception& e) 
-    {
-        std::cout << e.what() << std::endl;
-    }
-
-    try 
-    {
+    
         joe.signForm(robotForm);
         joe.executeForm(robotForm);
-    } 
-    catch (std::exception& e) 
-    {
-        std::cout << e.what() << std::endl;
-    }
-
-    try 
-    {
+        
         joe.signForm(pardonForm);
         joe.executeForm(pardonForm);
-    } 
-    catch (std::exception& e)
+    }
+    
+    catch (const std::exception &e)
     {
-        std::cout << e.what() << std::endl;
+        std::cout << "Exception caught: " << e.what() << std::endl;
     }
     return (0);
 }

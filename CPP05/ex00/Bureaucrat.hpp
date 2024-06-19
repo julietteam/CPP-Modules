@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:22:00 by juandrie          #+#    #+#             */
-/*   Updated: 2024/05/06 16:05:49 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/19 17:03:21 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,22 @@ public:
     
     void incrementGrade();
     void decrementGrade();
-
     class GradeTooHighException : public std::exception
     {
     public:
-        const char *what() const throw()
+        const char* what() const throw()
         {
-            return ("Grade too high");
+            return ("Grade too high\n");
         }
     };
-
     class GradeTooLowException : public std::exception
-    { 
+    {
     public:
-        const char *what() const throw()
+        const char* what() const throw()
         {
-            return ("Grade too low");
+            return ("Grade too low\n");
         }
     };
-    
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &b);

@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:23:03 by juandrie          #+#    #+#             */
-/*   Updated: 2024/05/06 16:11:15 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:36:01 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,37 @@
 
 Bureaucrat::Bureaucrat() : name("Unnamed"), grade(150)
 {
+    std::cout << "Bureaucrat default constructor called for " << getName() << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name), grade(grade)
 {
-    if (grade < 1) 
-        throw GradeTooHighException();
-    if (grade > 150)
-        throw GradeTooLowException();
+    std::cout << "Bureaucrat assign constructor called for " << getName() << std::endl;
+	try
+	{
+		if (getGrade() < 1)
+			throw Bureaucrat::GradeTooHighException();
+		else if (getGrade() > 150)
+			throw Bureaucrat::GradeTooLowException();
+	}
+	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << e.what();
+		this->grade = 1;
+		std::cout << "Bureaucrat " << getName() << " is now set to default grade : 1" << std::endl;
+	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout << e.what();
+		this->grade = 150;
+		std::cout << "Bureaucrat " << getName() << " is now set to default grade : 150" << std::endl;
+	}
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.grade)
 {
+    std::cout << "Bureaucrat copy constructor called for " << getName() << std::endl;
 }
-
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
@@ -40,6 +57,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 
 Bureaucrat::~Bureaucrat()
 {
+    std::cout << "Bureaucrat destructor called for " << getName() << std::endl;
 }
 
 const std::string &Bureaucrat::getName() const
@@ -51,17 +69,35 @@ int Bureaucrat::getGrade() const
 {
     return (grade);
 }
+
 void Bureaucrat::incrementGrade()
 {
-    if (grade <= 1)
-        throw GradeTooHighException();
-    --grade; 
+    try
+    {
+        if (grade <= 1)
+            throw GradeTooHighException();
+        else
+            --grade; 
+    }
+    catch (Bureaucrat::GradeTooHighException &e)
+    {
+        std::cout << e.what();
+    } 
 }
+
 void Bureaucrat::decrementGrade()
 {
-    if (grade >= 150)
-        throw GradeTooLowException();
-    ++grade;
+    try
+    {
+        if (grade >= 150)
+            throw GradeTooLowException();
+        else
+            ++grade;
+    }
+    catch (Bureaucrat::GradeTooLowException &e)
+    {
+        std::cout << e.what();
+    }
 }
 
 void Bureaucrat::signForm(Form &form)
@@ -69,12 +105,18 @@ void Bureaucrat::signForm(Form &form)
     try
     {
         form.beSigned(*this);
-        std::cout << name << " signed " << form.getName() << std::endl;
+        std::cout << this->getName() << " signed " << form.getName() << std::endl;
     }
-    catch(const std::exception &e)
+    catch(Form::GradeTooLowException &e)
     {
-        std::cout << name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+        std::cout << this->getName() << " couldn't sign " << form.getName() << " because ";
+        std::cout << e.what() << std::endl;
     }
+    catch(Form::AlreadySignedException &e)
+	{
+		std::cout << this->getName() << " couldn't sign " << form.getName() << " because ";
+		std::cout << e.what() << std::endl;
+	}
     
 }
 

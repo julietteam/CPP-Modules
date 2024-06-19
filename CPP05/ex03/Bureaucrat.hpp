@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:22:00 by juandrie          #+#    #+#             */
-/*   Updated: 2024/05/06 18:08:45 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/19 19:55:27 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ public:
     public:
         const char *what() const throw()
         {
-            return ("Grade too high");
+            return ("Grade too high\n");
         }
     };
 
@@ -53,7 +53,7 @@ public:
     public:
         const char *what() const throw()
         {
-            return ("Grade too low");
+            return ("Grade too low\n");
         }
     };
     
