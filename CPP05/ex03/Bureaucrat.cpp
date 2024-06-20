@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:23:03 by juandrie          #+#    #+#             */
-/*   Updated: 2024/06/19 19:55:04 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/20 10:21:26 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,25 @@ Bureaucrat::Bureaucrat() : name("Unnamed"), grade(150)
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name), grade(grade)
 {
     std::cout << "Bureaucrat assign constructor called for " << getName() << std::endl;
-	if (getGrade() < 1)
-		throw Bureaucrat::GradeTooHighException();
-	else if (getGrade() > 150)
-		throw Bureaucrat::GradeTooLowException();
-    else
-        this->grade = grade;
+	try
+    {
+        if (getGrade() < 1)
+		    throw Bureaucrat::GradeTooHighException();
+	    else if (getGrade() > 150)
+		    throw Bureaucrat::GradeTooLowException();
+    }
+    catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << e.what();
+		this->grade = 1;
+		std::cout << "Bureaucrat " << getName() << " is now set to default grade : 1" << std::endl;
+	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout << e.what();
+		this->grade = 150;
+		std::cout << "Bureaucrat " << getName() << " is now set to default grade : 150" << std::endl;
+	}
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.grade)

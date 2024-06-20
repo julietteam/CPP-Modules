@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:31:39 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/20 19:07:33 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/20 10:40:07 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main()
 {
     Intern intern;
     AForm *aForm;
-    Bureaucrat Chief("Juliette", 1);
+    Bureaucrat Chief("Juliette", 2);
 
     std::cout << "-------------------------------------------" << std::endl;
     std::cout << "Test avec le formulaire RobotomyRequestForm" << std::endl;

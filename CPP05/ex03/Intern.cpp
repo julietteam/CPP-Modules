@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:15:13 by juandrie          #+#    #+#             */
-/*   Updated: 2024/06/19 19:56:43 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/20 10:31:09 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Intern &Intern::operator=(const Intern &other)
     
 Intern::~Intern()
 {
-    std::cout << "Intern destructor constructor called" << std::endl;
+    std::cout << "Intern destructor called" << std::endl;
 }
 
 
