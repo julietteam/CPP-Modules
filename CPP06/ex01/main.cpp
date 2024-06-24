@@ -6,23 +6,20 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:25:29 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/25 11:25:30 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:34:51 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "Serializer.hpp"
 
 int main()
 {
-    // Crée un objet de structure Data.
     Data originalData;
     originalData.number = 42;
     originalData.text = "Example text";
 
     // Sérialise l'objet Data.
-    unsigned long serialized = Serializer::serialize(&originalData);
+    uintptr_t serialized = Serializer::serialize(&originalData);
     std::cout << "Serialized data: " << serialized << std::endl;
 
     // Désérialise l'objet Data.
@@ -37,7 +34,7 @@ int main()
    
 	// Test avec un décalage d'adresse pour vérifier la robustesse
     std::cout << "Testing with offset address:" << std::endl;
-    unsigned long offsetSerialized = serialized + sizeof(int);
+    uintptr_t offsetSerialized = serialized + sizeof(int);
     Data *offsetDeserializedData = Serializer::deserialize(offsetSerialized);
 
     // Cela devrait échouer car le pointeur désérialisé ne correspond pas à l'adresse d'origine.
@@ -48,7 +45,7 @@ int main()
 
     // Test de désérialisation d'un pointeur nul
     std::cout << "Testing with null pointer:" << std::endl;
-    unsigned long nullSerialized = Serializer::serialize(NULL);
+    uintptr_t nullSerialized = Serializer::serialize(NULL);
     Data* nullDeserializedData = Serializer::deserialize(nullSerialized);
 
     // Cela devrait réussir car un pointeur nul reste un pointeur nul après sérialisation/désérialisation.

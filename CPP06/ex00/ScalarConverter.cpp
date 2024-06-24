@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julietteandrieux <julietteandrieux@stud    +#+  +:+       +#+        */
+/*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 11:53:38 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/23 16:41:50 by julietteand      ###   ########.fr       */
+/*   Updated: 2024/06/24 14:47:07 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,81 +27,28 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 
 ScalarConverter::~ScalarConverter() {}
 
-static bool isSpecialFloat(const std::string &literal)
-{
-    return literal == "nan" || literal == "nanf" ||
-           literal == "-inf" || literal == "-inff" ||
-           literal == "+inf" || literal == "+inff" ||
-           literal == "inf";
-}
-
-static void handleSpecialTypes(const std::string &literal)
-{
-    std::cout << "char: impossible" << std::endl;
-    std::cout << "int: impossible" << std::endl;
-
-    if (literal == "nan" || literal == "nanf")
-    {
-        std::cout << "float: nanf" << std::endl;
-        std::cout << "double: nan" << std::endl;
-    }
-    else if (literal == "-inf" || literal == "-inff") 
-    {
-        std::cout << "float: -inff" << std::endl;
-        std::cout << "double: -inf" << std::endl;
-    } 
-    else if (literal == "+inf" || literal == "+inff" || literal == "inf") 
-    {
-        std::cout << "float: inff" << std::endl;
-        std::cout << "double: inf" << std::endl;
-    }
-}
-
-
-void ScalarConverter::convert(const std::string &literal)
+void ScalarConverter::convert(std::string literal)
 {
     if (isSpecialFloat(literal))
     {
         handleSpecialTypes(literal);
         return;
     }
-
-    if (literal.size() == 1 && std::isprint(literal[0]) && !std::isdigit(literal[0]))
+    else if (isChar(literal))
+        convertFromChar(literal);
+    else if (isInt(literal))
+        convertFromInt(literal);
+    else if (isFloat(literal))
+        convertFromFloat(literal);
+    else if (isDouble(literal))
+        convertFromDouble(literal);
+    else 
     {
-        char c = literal[0];
-        std::cout << "char: " << c << std::endl;
-        std::cout << "int: " << static_cast<int>(c) << std::endl;
-        std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
-        std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
-        return;
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: impossible" << std::endl;
     }
-
-    char *end;
-    errno = 0;
-    double d = strtod(literal.c_str(), &end);
-    if (end != literal.c_str() && (*end == '\0' || *end == 'f' || *end == 'F'))
-    {
-        long i = static_cast<long>(d);
-
-        if (i >= std::numeric_limits<char>::min() && \
-        i <= std::numeric_limits<char>::max() && \
-        std::isprint(static_cast<char>(i))) 
-        {
-            std::cout << "char: " << static_cast<char>(i) << std::endl;
-        }
-        else 
-            std::cout << "char: Non displayable" << std::endl;
-
-        if (d == i && i >= std::numeric_limits<int>::min() && i <= std::numeric_limits<int>::max())
-        {
-            std::cout << "int: " << i << std::endl;
-        }
-        else
-            std::cout << "int: impossible" << std::endl;
-
-        std::cout << "float: " << static_cast<float>(d) << ".0f" << std::endl;
-        std::cout << "double: " << d << ".0" << std::endl;
-    }
-
+    
 }
 

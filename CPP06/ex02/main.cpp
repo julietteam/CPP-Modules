@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:13:05 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/25 16:13:44 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:55:28 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ Base *generate(void)
     
 }
 
-void identify(Base* p)
+void identify(Base *p)
 {
     if (dynamic_cast<A*>(p))
-        std::cout << "A pointer was identified" << std::endl;
+        std::cout << "[pointer] : the object is of type A" << std::endl;
     else if (dynamic_cast<B*>(p))
-        std::cout << "B pointer was identified" << std::endl;
+        std::cout << "[pointer] : the object is of type B" << std::endl;
     else if (dynamic_cast<C*>(p))
-        std::cout << "C pointer was identified" << std::endl;
+        std::cout << "[pointer] : the object is of type C" << std::endl;
 }
 
 void identify(Base &p)
@@ -47,32 +47,32 @@ void identify(Base &p)
     try
     {
         (void)dynamic_cast<A&>(p);
-        std::cout << "A reference was identified" << std::endl;
+        std::cout << "[reference] : the object is of type A" << std::endl;
         return;
     }
     catch (const std::exception &e)
     {
-        std::cout << "Is not a A reference" << std::endl;
+        std::cout << "[reference] : the object isn't of type A" << std::endl;
     }
     try
     {
         (void)dynamic_cast<B&>(p);
-        std::cout << "B reference was identified" << std::endl;
+        std::cout << "[reference] : the object is of type B" << std::endl;
         return;
     }
     catch (const std::exception &e)
     {
-        std::cout << "Is not a B reference" << std::endl;
+        std::cout << "[reference] : the object isn't of type B" << std::endl;
     }
     try
     {
         (void)dynamic_cast<C&>(p);
-        std::cout << "C reference was identified" << std::endl;
+        std::cout << "[reference] : the object is of type C" << std::endl;
         return;
     }
     catch (const std::exception &e)
     {
-        std::cout << "Is not a C reference" << std::endl;
+        std::cout << "[reference] : the object isn't of type C" << std::endl;
     }
 }
 int main()

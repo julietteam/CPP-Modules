@@ -6,7 +6,7 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/21 11:51:12 by juandrie          #+#    #+#              #
-#    Updated: 2024/03/21 17:59:48 by juandrie         ###   ########.fr        #
+#    Updated: 2024/06/24 14:15:14 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ RM = rm -f
 
 SRC = 	main.cpp\
 		ScalarConverter.cpp\
+		Display.cpp\
+		Check.cpp\
 
 OBJ = $(SRC:.cpp=.o)
 
