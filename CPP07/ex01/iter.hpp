@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:00:17 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/25 17:49:31 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:00:42 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void iter(T *array, size_t len, F function)
         function(array[i]);
     }
 }
+
 
 #endif

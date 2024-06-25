@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 18:20:56 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/26 12:22:51 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/25 16:15:32 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,15 @@ Array<T> &Array<T>::operator=(const Array &other)
     if (this != &other)
     {
         std::cout << "Array assignment operator called" << std::endl;
-        delete []elements;
         _size = other._size;
-        elements = new T[_size];
-        for (unsigned int i = 0; i < _size; i++)
+        if (elements)
         {
-            elements[i] = other.elements[i];
+            delete []elements;
+            elements = new T[_size];
+            for (unsigned int i = 0; i < _size; i++)
+            {
+                elements[i] = other.elements[i];
+            }
         }
     }
     return (*this);
@@ -60,7 +63,7 @@ T &Array<T>::operator[](unsigned int index)
 {
         if (index >= _size)
         {
-            throw std::exception();
+            throw IndexOutOfBoundsException();
         }
         return (elements[index]);
 }
@@ -70,7 +73,7 @@ const T &Array<T>::operator[](unsigned int index) const
 {
     if (index >= _size)
     {
-        throw std::exception();
+        throw IndexOutOfBoundsException();
     }
     return (elements[index]);
 }

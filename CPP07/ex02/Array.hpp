@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:56:01 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/26 11:27:09 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:16:34 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ public:
     const T &operator[](unsigned int index) const;
     
     unsigned int size() const;
+
+    class IndexOutOfBoundsException : public std::exception
+	{
+		public :
+		const char* what(void) const throw()
+		{
+			return ("[Exception] : index is out of bound !");
+		}
+	};
 };
 
 
