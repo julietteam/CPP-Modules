@@ -6,13 +6,13 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:59:24 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/26 14:48:23 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:29:26 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 
-int main()
+void testVector()
 {
     std::cout << "----------------" << std::endl;
     std::cout << "TEST AVEC VECTOR" << std::endl;
@@ -24,14 +24,19 @@ int main()
     numbers.push_back(3);
     numbers.push_back(4);
     numbers.push_back(5);
-
-    std::vector<int>::iterator result = easyfind(numbers, 3);
-    if (result != numbers.end())
+    try
+    {
+        std::vector<int>::iterator result = easyfind(numbers, 3);
         std::cout << "Found value: " << *result << std::endl;
-    else
-        std::cout << "Value not found." << std::endl;
+    }
+    catch (const NotFoundException &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+}
 
-
+void testList()
+{
     std::cout << "---------------" << std::endl;
     std::cout << "TEST AVEC LIST" << std::endl;
     std::cout << "---------------" << std::endl;
@@ -42,12 +47,19 @@ int main()
     lst.push_back(3);
     lst.push_back(4);
     lst.push_back(5);
-    std::list<int>::iterator res = easyfind(lst, 3);
-    if (res != lst.end())
-        std::cout << "Found value: " << *res << std::endl;
-    else
-        std::cout << "Value not found." << std::endl;
-    
+    try
+    {
+        std::list<int>::iterator result = easyfind(lst, 0);
+        std::cout << "Found value: " << *result << std::endl;
+    }
+    catch (const NotFoundException &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+}
+
+void testDeque()
+{
     std::cout << "---------------" << std::endl;
     std::cout << "TEST AVEC DEQUE" << std::endl;
     std::cout << "---------------" << std::endl;
@@ -58,10 +70,22 @@ int main()
     deq.push_back(3);
     deq.push_back(4);
     deq.push_back(5);
-    std::deque<int>::iterator resu = easyfind(deq, 3);
-    if (resu != deq.end())
-        std::cout << "Found value: " << *resu << std::endl;
-    else
-        std::cout << "Value not found." << std::endl;
-    return (0);
+    try
+    {
+        std::deque<int>::iterator result = easyfind(deq, 3);
+        std::cout << "Found value: " << *result << std::endl;
+    }
+    catch (const NotFoundException &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+}
+
+int main()
+{
+    testVector();
+    testList();
+    testDeque();
+    
+    return 0;
 }
