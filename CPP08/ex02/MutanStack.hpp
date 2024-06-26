@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 18:58:53 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/27 14:18:23 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:26:08 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ public:
 
    
     MutantStack() : std::stack<T>() {}
-    MutantStack(const MutantStack<T>& other) : std::stack<T>(other) {}
+    MutantStack(const MutantStack<T> &other) : std::stack<T>(other){}
     MutantStack<T> &operator=(const MutantStack<T> &other)
     {
-        std::stack<T>::operator=(other);
+        if (this != &other)
+            std::stack<T>::operator=(other);
         return (*this);
     }
     ~MutantStack() {}

@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 15:01:26 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/26 17:58:04 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:09:14 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ public:
     template <typename Iterator>
     void addRange(Iterator begin, Iterator end)
     {
+        if (static_cast<unsigned long>(std::distance(begin, end)) > max_size - numbers.size())
+            throw std::length_error("Adding this range would exceed the Span's capacity.");
         for (Iterator it = begin; it != end; ++it)
         {
             addNumber(*it);

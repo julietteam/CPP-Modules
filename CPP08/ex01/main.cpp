@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 15:25:42 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/26 18:10:41 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:13:20 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int main()
         sp3.addNumber(2);
         sp3.addNumber(1);
     }
-    catch (const std::length_error& e)
+    catch (const std::length_error &e)
     {
         std::cerr << e.what() << std::endl;
     }
@@ -69,7 +69,7 @@ int main()
     {
         std::cout << "Shortest Span: " << sp3.shortestSpan() << std::endl;
     }
-    catch (const std::logic_error& e)
+    catch (const std::logic_error &e)
     {
         std::cerr << "Exception caught for shortestSpan: " << e.what() << std::endl;
     }
@@ -78,7 +78,7 @@ int main()
     {
         std::cout << "Longest Span: " << sp3.longestSpan() << std::endl;
     }
-    catch (const std::logic_error& e)
+    catch (const std::logic_error &e)
     {
         std::cerr << "Exception caught for longestSpan: " << e.what() << std::endl;
     }
@@ -94,7 +94,7 @@ int main()
         sp4.addNumber(5); 
         std::cout << "Shortest Span: " << sp4.shortestSpan() << std::endl;
     } 
-    catch (const std::logic_error& e)
+    catch (const std::logic_error &e)
     {
         std::cerr << "Exception caught for shortestSpan: " << e.what() << std::endl;
     }
@@ -103,7 +103,7 @@ int main()
     {
         std::cout << "Longest Span: " << sp4.longestSpan() << std::endl;
     }
-    catch (const std::logic_error& e)
+    catch (const std::logic_error &e)
     {
         std::cerr << "Exception caught for longestSpan: " << e.what() << std::endl;
     }
@@ -117,9 +117,25 @@ int main()
     std::vector<int> numbers(array, array+ sizeof(array) / sizeof(array[0]));
     sp2.addRange(numbers.begin(), numbers.end());
 
-    std::cout << "Shortest Span (after addRange): " << sp2.shortestSpan() << std::endl;
-    std::cout << "Longest Span (after addRange): " << sp2.longestSpan() << std::endl;
+    std::cout << "Shortest Span: " << sp2.shortestSpan() << std::endl;
+    std::cout << "Longest Span: " << sp2.longestSpan() << std::endl;
     
+    std::cout << "-----------------------------" << std::endl;
+    std::cout << "TEST DE addRange AVEC TAILLE EXCESSIVE" << std::endl;
+    std::cout << "-----------------------------" << std::endl;
+
+    Span sp5(3);
+    int array2[] = {1, 2, 3, 4, 5};
+    std::vector<int> numbers2(array2, array2 + sizeof(array2) / sizeof(array2[0]));
+    try
+    {
+        sp5.addRange(numbers2.begin(), numbers2.end());
+    }
+    catch (const std::length_error &e)
+    {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+
     std::cout << "-----------------------------" << std::endl;
     std::cout << "TEST AVEC 10 000 et +" << std::endl;
     std::cout << "-----------------------------" << std::endl;
@@ -140,7 +156,7 @@ int main()
         std::cout << "Shortest Span: " << largeSpan.shortestSpan() << std::endl;
         std::cout << "Longest Span: " << largeSpan.longestSpan() << std::endl;
     }
-    catch (const std::exception& e)
+    catch (const std::exception &e)
     {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
