@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:30:26 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/28 16:03:50 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:36:37 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ bool BitcoinExchange::processInputFile(const char *filename, const std::map<std:
     }
 
     std::string line;
-    std::getline(file, line);
+   // std::getline(file, line);
     while (std::getline(file, line))
     {
         std::istringstream iss(line);
@@ -57,7 +57,6 @@ bool BitcoinExchange::processInputFile(const char *filename, const std::map<std:
             std::cout << "Error: bad input => " << line << std::endl;
             continue;
         }
-
         if (!BitcoinExchange::dateIsValid(date))
         {
             std::cout << "Error: invalid date format => " << date << std::endl;
@@ -175,30 +174,23 @@ bool BitcoinExchange::dateIsValid(const std::string& date)
     dateStream >> day;
     if (dateStream.fail()) 
         return (false);
-    switch (month)
+     if (day < 1 || day > 31)
+        return false;
+    if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+        return false;
+    if (month == 2)
     {
-        case 4: case 6: case 9: case 11:
-            if (day > 30)
-            {
-                return (false);
-                break;
-            }
-        case 2:
-            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) 
-            {
-                if (day > 29)
-                    return (false);
-            }
-            else
-            {
-                if (day > 28)
-                    return (false);
-            }
-            break;
-        default:
-            if (day > 31)
-                return (false);
+        if (day > 29)
+            return false;
+        if (day == 29 && (year % 4 != 0 || (year % 100 == 0 && year % 400 != 0)))
+            return false;
     }
+    if (year == 2009 && month == 1 && day < 2)
+        return false;
+    if (year == 2022 && month > 3)
+        return false;
+    if (year == 2022 && month == 3 && day > 29)
+        return false;
     return (true);
 }
 

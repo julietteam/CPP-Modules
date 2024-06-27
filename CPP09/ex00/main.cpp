@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:26:47 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/28 12:36:54 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:47:24 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 {
     if (argc != 3)
     {
-        std::cout << "Usage: " << argv[0] << " <CSV file name>" << std::endl;
+        std::cout << "Usage: " << argv[0] << " <arguments required: ./btc file.csv file.txt>" << std::endl;
         return (1);
     }
 
