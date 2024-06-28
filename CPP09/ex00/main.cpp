@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:26:47 by juandrie          #+#    #+#             */
-/*   Updated: 2024/06/27 17:47:24 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/28 18:03:54 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 int main(int argc, char **argv)
 {
-    if (argc != 3)
+    if (argc == 2)
     {
-        std::cout << "Usage: " << argv[0] << " <arguments required: ./btc file.csv file.txt>" << std::endl;
-        return (1);
+        try
+        {
+            BitcoinExchange btc;
+            btc.setDataBase();
+            std::map<std::string, float> historicalData;
+            btc.processInputFile(argv[1], historicalData);
+        }
+        catch(const std::exception &e)
+        {
+            std::cerr << e.what() << std::endl;
+            return (1);
+        }
     }
-
-    std::map<std::string, float> historicalData;
-    if (!BitcoinExchange::loadDataFromFile(argv[1], historicalData))
+    else 
     {
-        std::cout << "Error loading data from file." << std::endl;
-        return (1);
+        std::cout << "Error: could not open file." << std::endl;
     }
-
-    if (!BitcoinExchange::processInputFile(argv[2], historicalData))
-    {
-        std::cout << "Error processing input file: " << argv[2] << std::endl;
-        return 1;
-    }
-
     return (0);
 }

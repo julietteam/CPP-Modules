@@ -6,11 +6,13 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:30:26 by juandrie          #+#    #+#             */
-/*   Updated: 2024/06/27 19:36:37 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/06/28 18:34:15 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::BitcoinExchange(const std::string &date, float value) : date(date), value(value)
 {
@@ -34,70 +36,43 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
-
-bool BitcoinExchange::processInputFile(const char *filename, const std::map<std::string, float> &exchangeRates)
+bool BitcoinExchange::isValidFloat(const std::string &valueStr)
 {
-    std::ifstream file(filename);
-    if (!file.is_open())
+    bool isValidValue = true;
+    bool hasDecimalPoint = false;
+    for (std::string::size_type i = 0; i < valueStr.length(); ++i)
     {
-        std::cout << "Error opening input file." << std::endl;
-        return (false);
-    }
-
-    std::string line;
-   // std::getline(file, line);
-    while (std::getline(file, line))
-    {
-        std::istringstream iss(line);
-        std::string date, valueStr, separator;
-        float value;
-
-        if (!(iss >> date >> separator >> valueStr))
+        char c = valueStr[i];
+        if (!isdigit(c))
         {
-            std::cout << "Error: bad input => " << line << std::endl;
-            continue;
-        }
-        if (!BitcoinExchange::dateIsValid(date))
-        {
-            std::cout << "Error: invalid date format => " << date << std::endl;
-            continue;
-        }
-        std::istringstream valueStream(valueStr);
-        if (!(valueStream >> value) || valueStream.fail() || !valueStream.eof())
-        {
-            std::cout << "Error processing input line: " << line << std::endl;
-            continue;
-        }
-        if (value < 0)
-        {
-            std::cout << "Error: not a positive number." << std::endl;
-            continue;
-        }
-        if (value > 1000)
-        {
-            std::cout << "Error: too large a number." << std::endl;
-            continue;
-        }
-        float calculatedValue = BitcoinExchange::calculatedValue(exchangeRates, date, value);
-        if (calculatedValue != -1)
-        {
-            std::cout << date << " => " << value << " = " << calculatedValue << std::endl;
-        } 
-        else
-        {
-            std::cout << "No exchange rate available for " << date << std::endl;
+            if (c == '.' && !hasDecimalPoint)
+            {
+                hasDecimalPoint = true;
+            }
+            else
+            {
+                isValidValue = false;
+                break;
+            }
         }
     }
-
-    file.close();
-    return (true);
+    return (isValidValue && !valueStr.empty());
 }
 
-bool BitcoinExchange::loadDataFromFile(const char *filename, std::map<std::string, float> &data)
+int BitcoinExchange::convertToFloat(const std::string &valueStr, float &value)
 {
-    std::ifstream file(filename);
+    std::istringstream valueStream(valueStr);
+    if (!(valueStream >> value) || valueStream.fail() || !valueStream.eof())
+    {
+        return (1);
+    }
+    return (0);
+}
+void BitcoinExchange::setDataBase()
+{
+    std::ifstream file("data.csv");
     if (!file.is_open())
-        return (false);
+        throw FileOpenException();
 
     std::string line;
     std::getline(file, line);
@@ -116,12 +91,66 @@ bool BitcoinExchange::loadDataFromFile(const char *filename, std::map<std::strin
         {
             continue;
         }
-        data[date] = rate;
+        this->rates[date] = rate;
     }
-    
     file.close();
-    return (true);
 }
+void BitcoinExchange::processInputFile(const char *filename, const std::map<std::string, float> &exchangeRates)
+{
+    std::ifstream file(filename);
+    if (!file.is_open())
+        throw (FileOpenException());
+        
+    std::string line;
+    std::getline(file, line);
+    while (std::getline(file, line))
+    {
+        
+        try
+        {
+            std::istringstream iss(line);
+            std::string date, valueStr, separator;
+            float floatValue;
+            if (!(iss >> date >> separator >> valueStr))
+                throw (BadInputException(line));
+            BitcoinExchange::dateIsValid(date);
+            BitcoinExchange::isValidFloat(valueStr);
+            std::istringstream valueStream(valueStr);
+            BitcoinExchange::convertToFloat(valueStr, floatValue);
+            if (floatValue < 0)
+                throw (NegativeNumberException());
+            if (floatValue > 1000)
+                throw (NBTooLargeException());
+            float calculatedValue = BitcoinExchange::calculatedValue(exchangeRates, date, floatValue);
+            if (calculatedValue != -1)
+            {
+                std::cout << date << " => " << floatValue << " = " << calculatedValue << std::endl;
+            } 
+            else
+            {
+                throw (BadInputException(line));
+            }
+        }
+        // catch (const NegativeNumberException &e)
+        // {
+        //     std::cerr << e.what() << std::endl;
+        // }
+        // catch (const NBTooLargeException &e)
+        // {
+        //     std::cerr << e.what() << std::endl;
+        // }
+        // catch (const BadInputException &e)
+        // {
+        //     std::cerr << e.what() << std::endl;
+        // }
+        catch (const std::exception &e)
+        {
+            std::cerr << e.what() << std::endl;
+        }
+    }
+    file.close();
+}
+
 float BitcoinExchange::findValueByDate(const std::map<std::string, float> &data, const std::string &date)
 {
     std::map<std::string, float>::const_iterator it = data.find(date);
@@ -144,53 +173,48 @@ float BitcoinExchange::calculatedValue(const std::map<std::string, float> &data,
     float rate = findValueByDate(data, date);
     
     if (rate == -1)
-    {
-        std::cout << "No data available for " << date << std::endl;
-        return (-1);
-    }
-
+        throw BadInputException(date);
     float totalValue = quantity * rate;
-
     return (totalValue);
 }
 
-bool BitcoinExchange::dateIsValid(const std::string& date)
+int BitcoinExchange::dateIsValid(const std::string &date)
 {
-    if (date.length() != 10) 
-        return (false);
+    if (date.empty() || date.length() != 10) 
+        throw (BadInputException(date));
     if (date[4] != '-' || date[7] != '-')
-        return (false);
+        throw (BadInputException(date));
     
     int year, month, day;
     std::istringstream dateStream(date);
     dateStream >> year;
     if (dateStream.fail() || year < 2009 || year > 2022) 
-        return (false);
+        throw (BadInputException(date));
     dateStream.ignore();
     dateStream >> month;
     if (dateStream.fail() || month < 1 || month > 12) 
-        return (false);
+        throw (BadInputException(date));
     dateStream.ignore();
     dateStream >> day;
     if (dateStream.fail()) 
-        return (false);
+        throw (BadInputException(date));
      if (day < 1 || day > 31)
-        return false;
+        throw (BadInputException(date));
     if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
-        return false;
+        throw (BadInputException(date));
     if (month == 2)
     {
         if (day > 29)
-            return false;
+            throw (BadInputException(date));
         if (day == 29 && (year % 4 != 0 || (year % 100 == 0 && year % 400 != 0)))
-            return false;
+            throw (BadInputException(date));
     }
     if (year == 2009 && month == 1 && day < 2)
-        return false;
+        throw (BadInputException(date));
     if (year == 2022 && month > 3)
-        return false;
+        throw (BadInputException(date));
     if (year == 2022 && month == 3 && day > 29)
-        return false;
-    return (true);
+        throw (BadInputException(date));
+    return (0);
 }
 
