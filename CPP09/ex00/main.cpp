@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:26:47 by juandrie          #+#    #+#             */
-/*   Updated: 2024/06/28 18:03:54 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:12:56 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
         {
             BitcoinExchange btc;
             btc.setDataBase();
-            std::map<std::string, float> historicalData;
+            std::map<std::string, float> historicalData = btc.getRates();
             btc.processInputFile(argv[1], historicalData);
         }
         catch(const std::exception &e)

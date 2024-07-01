@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:22:02 by juandrie          #+#    #+#             */
-/*   Updated: 2024/06/28 18:33:18 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:09:31 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,14 @@ public:
     BitcoinExchange &operator=(const BitcoinExchange &other);
     ~BitcoinExchange();
 
+    std::map<std::string, float> getRates() const;
+
     void            setDataBase();
+    static void     checkSepErrors(std::string const &sep, std::string const &input);
     static int      convertToFloat(const std::string &valueStr, float &value);
     static bool      isValidFloat(const std::string &valueStr);
     static float    findValueByDate(const std::map<std::string, float>& data, const std::string& date);
-    static int     dateIsValid(const std::string& date);
+    static void     dateIsValid(const std::string& date);
     static float    calculatedValue(const std::map<std::string, float>& data, const std::string &date, float quantity);
     static void     processInputFile(const char *filename, const std::map<std::string, float>& exchangeRates);
     class FileOpenException : public std::exception
