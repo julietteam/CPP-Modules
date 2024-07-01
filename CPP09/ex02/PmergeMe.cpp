@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:05:35 by juandrie          #+#    #+#             */
-/*   Updated: 2024/04/04 14:23:17 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/07/01 18:13:59 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ int PmergeMe<T>::selectPivot(std::vector<int> &vec, int left, int right)
         int median = findMedian(vec, i, subRight);
         medians.push_back(median);
     }
-
     return (selectPivot(medians, 0, medians.size() - 1));
 }
 

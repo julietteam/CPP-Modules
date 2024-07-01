@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:00:57 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/28 18:53:37 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/07/01 16:24:09 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
+#include <exception>
 
 class Rpn
 {
 private:
-    std::stack<double> calcStack;
+    std::stack<int> calcStack;
 
 public:
     Rpn();
@@ -34,6 +35,12 @@ public:
     void performOperation(const std:: string &operation);
     double getResult() const;
     bool isOperator(const std::string &op) const;
+
+    class ErrorException : public std::exception
+	{
+		public:
+		const char *what(void) const throw();
+	};
 };
 
 

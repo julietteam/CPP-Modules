@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:01:42 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/28 18:53:31 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/07/01 16:03:04 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void Rpn::performOperation(const std:: string &operation)
 {
     if (calcStack.size() < 2)
     {
-        throw std::runtime_error("Insufficient values for operation.");
+        throw Rpn::ErrorException();
     }
 
     double b = calcStack.top();
@@ -55,13 +55,13 @@ void Rpn::performOperation(const std:: string &operation)
     else if (operation == "/")
     {
         if (b == 0)
-            throw std::runtime_error("Division by zero");
+            throw Rpn::ErrorException();
         calcStack.push(a / b);
     }
     else if (operation == "*")
         calcStack.push(a * b);
     else 
-        throw std::invalid_argument("Invalid operation");  
+        throw Rpn::ErrorException();  
 
 }
 
@@ -69,7 +69,7 @@ double Rpn::getResult() const
 {
     if (calcStack.size() != 1)
     {
-        throw std::runtime_error("The result is not a single value.");
+        throw Rpn::ErrorException();
     }
     return (calcStack.top());
 }
@@ -77,4 +77,9 @@ double Rpn::getResult() const
 bool Rpn::isOperator(const std::string &op) const
 {
     return (op == "+" || op == "-" || op == "*" || op == "/");
+}
+
+const char *Rpn::ErrorException::what() const throw()
+{
+    return ("Error");
 }

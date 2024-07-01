@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:35:00 by juandrie          #+#    #+#             */
-/*   Updated: 2024/03/28 18:20:52 by juandrie         ###   ########.fr       */
+/*   Updated: 2024/07/01 16:24:18 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,16 @@ int main(int argc, char **argv)
                 calc.performOperation(token);
             else
             {
-                double value;
+                int value;
                 std::istringstream tokenStream(token);
                 if (!(tokenStream >> value))
                 {
                     std::cout << "Error" << std::endl;
+                    return (1);
+                }
+                if (value >= 10)
+                {
+                    std::cout << "Error: numbers must be less than 10" << std::endl;
                     return (1);
                 }
                 calc.push(value);
